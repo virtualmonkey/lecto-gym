@@ -5,7 +5,7 @@ const Footer = () => (
   <Fragment>
     <footer className="footer">
       <small className="footer__text">
-        © 2023 <b>LectoGym App</b>. All Rights Reserved
+        © 2023 <b>LectoGym</b>. Todos los derechos reservados.
       </small>
     </footer>
   </Fragment>

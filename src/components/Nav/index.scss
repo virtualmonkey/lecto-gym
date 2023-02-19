@@ -19,13 +19,13 @@
     font-style: normal;
     font-weight: variables.$medium;
     font-size: variables.$pFontSize;
-    line-height: 19px;
+    line-height: 20px;
     margin: 0 20px 0;
     text-decoration: none;
-    color: variables.$secondaryLight;
+    color: variables.$textLight;
 
     &:hover {
-      color: variables.$secondaryDark;
+      color: variables.$textLight;
     }
 
     &:last-child {
