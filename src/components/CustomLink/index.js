@@ -1,9 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router'
-
-const createHistory = require("history").createBrowserHistory;
-const history = createHistory({ forceRefresh: true });
+import { useHistory } from "react-router-dom";
 
 const CustomLink = (props) => {
   const {
@@ -13,7 +11,9 @@ const CustomLink = (props) => {
     to,
     onClick,
     ...rest
-  } = props
+  } = props;
+  const history = useHistory();
+  
   return (
     <button
       {...rest}
