@@ -5,24 +5,27 @@ import { Redirect, Route, Switch } from "react-router-dom";
 //Pages
 import Home from '../pages/Home';
 import SignIn from '../pages/SignIn';
+import SignUp from '../pages/SignUp';
+import Dashboard from '../pages/Dashboard';
 
 //Components
 import Nav from '../components/Nav';
 
-class RouterApp extends React.Component {
+// TODO: restrict routes so that only authenticated users can reach them, otherwise redirect
 
-  render() {
-    return (
-      <Fragment>
-        <Nav />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/login" component={SignIn} />
-          <Redirect to="/" />
-        </Switch>
-      </Fragment>
-    );
-  }
+const RouterApp = () => {
+  return (
+    <Fragment>
+      <Nav />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/login" component={SignIn} />
+        <Route exact path="/signup" component={SignUp} />
+        <Route exact path="/dashboard" component={Dashboard} />
+        <Redirect to="/" />
+      </Switch>
+    </Fragment>
+  );
 }
 
 export default withRouter(RouterApp);

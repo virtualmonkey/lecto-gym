@@ -31,5 +31,13 @@
     &:last-child {
       margin: 0 0 0 20px !important;
     }
+
+    &--warning {
+      color: variables.$warningLight;
+
+      &:hover {
+        color: variables.$warningLight;
+      }
+    }
   }
 }
