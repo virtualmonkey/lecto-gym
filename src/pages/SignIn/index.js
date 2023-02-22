@@ -2,9 +2,11 @@ import React, { Fragment, useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { Link } from 'react-router-dom';
+import './index.scss'
 
 import * as authActions from '../../redux/actions/auth';
 import * as selectors from '../../redux/rootReducer';
+import Footer from "../../components/Footer";
 
 const SignIn = ({
   history,
@@ -21,7 +23,6 @@ const SignIn = ({
     onSubmit({ username, password });
   };
 
-  // TODO: update this route to the dashboard route
   useEffect(() => {
     if (isAuthenticated) {
       history.push("/dashboard");
@@ -32,52 +33,54 @@ const SignIn = ({
     <Fragment>
       <div className="page-container">
         <div className="signin">
-          {/*  TODO: add logic to show error message */}
-          <h1 className="signin__title">
-            Ingresa a LectoGym
-          </h1>
           <div className="signin__form-container">
-            <form onSubmit={handleSubmit} className="signing__form">
+            <h1 className="signin__title">
+              Ingresa a LectoGym
+            </h1>
+            <form onSubmit={handleSubmit} className="signin__form">
               <div className="signin__field-container">
-                <label className="signin__label">
-                  Nombre de usuario
-                </label>
-                <input 
-                  className="signing__input"
+                <input
+                  placeholder="Correo electrónico"
+                  className="signin__input"
                   type="text"
                   onChange={(event) => changeUsername(event.target.value)}
                 />
               </div>
               <div className="signin__field-container">
-                <label className="signin__label">
-                  Password
-                </label>
-                <input 
-                  className="signing__input"
+                <input
+                  placeholder="Contraseña"
+                  className="signin__input"
                   type="password"
                   onChange={(event) => changePassword(event.target.value)}
                 />
               </div>
-              <button 
-                className="signing__button"
+              {error && (
+                <div className="signin__error-message">
+                  {'Ha ocurrido un error, intenta de nuevo'}
+                </div>
+              )
+              }
+              <button
+                className="signin__button"
                 type="submit"
               >
-                Ingresar
+                {(isLoading === true) ? '...' : 'Ingresar'}
               </button>
             </form>
+            <div className="signin__question">
+              ¿Aún no tienes una cuenta?
+            </div>
+            <Link
+              className="signin__link"
+              to="/signup"
+              title="Signup"
+            >
+              Crear una cuenta
+            </Link>
           </div>
-          <div className="signing__question">
-            ¿Aún no tienes una cuenta?
-          </div>
-          <Link
-            className="signin__link"
-            to="/signup"
-            title="Signup"
-          >
-            Crear una cuenta
-          </Link>
         </div>
       </div>
+      <Footer />
     </Fragment>
   );
 };

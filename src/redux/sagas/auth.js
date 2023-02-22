@@ -4,6 +4,7 @@ import axios from 'axios';
 import * as actions from '../actions/auth';
 import * as types from '../types/auth';
 
+// TODO: change API route
 const LOGIN_API_ROUTE = 'https://63f3bee0fe3b595e2ee89e0a.mockapi.io/api/v1/login';
 
 const SignInFromApi = (credentials) => {
@@ -14,18 +15,17 @@ const SignInFromApi = (credentials) => {
 export function* signIn(action){
   try {
     const userResponse = yield call(SignInFromApi, action.payload);
-    console.log(userResponse)
     // TODO: check for the correct code
     if (userResponse.status === 201) {
       // TODO: check if the correct way to access response data is this
       if (userResponse.data){
-        console.log(userResponse.data)
         const authUser = userResponse.data;
         yield put(actions.completeSignIn(authUser));
       } else {
         actions.failSignIn('Could not fetch user due to an API error');
       }
     } else {
+      // TODO: change error messages
       actions.failSignIn('Could not fetch user with given credentials');
     }
   } catch (error) {
