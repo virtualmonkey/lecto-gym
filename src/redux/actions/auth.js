@@ -9,9 +9,9 @@ import {
 } from '../types/auth';
 
 // TODO: check if the shape of the payload is correct
-export const startSignIn = ({ username, password }) => ({
+export const startSignIn = ({ email, password }) => ({
   type: SIGNIN_USER_STARTED,
-  payload: { username, password }
+  payload: { email, password }
 });
 
 export const completeSignIn = (user) => ({
@@ -25,9 +25,9 @@ export const failSignIn = error => ({
 });
 
 // TODO: check if the shape of the payload is correct
-export const startSignUp = (username, password) => ({
+export const startSignUp = (name, email, password, passwordConfirmation) => ({
   type: SIGNUP_USER_STARTED,
-  payload: { username, password },
+  payload: { name, email, password, passwordConfirmation },
 });
 
 export const completeSignUp = (user) => ({

@@ -7,6 +7,7 @@ import Home from '../pages/Home';
 import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
 import Dashboard from '../pages/Dashboard';
+import Tutorial from '../pages/Tutorial';
 
 //Components
 import Nav from '../components/Nav';
@@ -22,6 +23,7 @@ const RouterApp = () => {
         <Route exact path="/login" component={SignIn} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/dashboard" component={Dashboard} />
+        <Route exact path="/tutorial" component={Tutorial} />
         <Redirect to="/" />
       </Switch>
     </Fragment>

@@ -15,12 +15,32 @@ const SignIn = ({
   isAuthenticated,
   onSubmit,
 }) => {
-  const [username, changeUsername] = useState("");
+  const [email, changeEmail] = useState("");
   const [password, changePassword] = useState("");
+
+  const handleOnEmailChange = (event) => {
+    const regex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+
+    if (event.target.value === ''){
+      event.target.setCustomValidity((event.target.value !== '') ? '' : 'Por favor llena este campo');
+    } else if (event.target.value) {
+      event.target.setCustomValidity((regex.test(event.target.value)) ? '' : 'Por favor ingresa un email')
+    }
+   
+    changeEmail(event.target.value);
+  };
+
+  const handleOnPasswordChange = (event) => {
+    if (event.target.value === ''){
+      event.target.setCustomValidity((event.target.value !== '') ? '' : 'Por favor llena este campo');
+    }
+   
+    changePassword(event.target.value);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmit({ username, password });
+    onSubmit({ email, password });
   };
 
   useEffect(() => {
@@ -42,8 +62,8 @@ const SignIn = ({
                 <input
                   placeholder="Correo electrónico"
                   className="signin__input"
-                  type="text"
-                  onChange={(event) => changeUsername(event.target.value)}
+                  type="email"
+                  onChange={(event) => handleOnEmailChange(event)}
                 />
               </div>
               <div className="signin__field-container">
@@ -51,7 +71,7 @@ const SignIn = ({
                   placeholder="Contraseña"
                   className="signin__input"
                   type="password"
-                  onChange={(event) => changePassword(event.target.value)}
+                  onChange={(event) => handleOnPasswordChange(event)}
                 />
               </div>
               {error && (

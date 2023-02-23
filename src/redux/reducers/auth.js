@@ -83,4 +83,4 @@ export default auth;
 export const getIsAuthenticating = state => state.isAuthenticating;
 export const getAuthenticatingError = state => state.error;
 export const getAuthUser = state => state.account ? state.account.user : null;
-export const getAuthUsername = state => state.account ? state.account.user.username : null;
+export const getAuthEmail = state => state.account ? state.account.user.email : null;
