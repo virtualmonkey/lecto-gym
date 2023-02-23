@@ -79,7 +79,7 @@
     border-color: variables.$grey;
     border-radius: 4px;
     width: 100%;
-    margin: 0 0 24px 0;
+    margin: 24px 0 0 0;
     font-family: variables.$fontFamily;
     font-style: normal;
     font-size: variables.$pFontSize;
@@ -90,6 +90,21 @@
       outline: none;
       border: 1px solid variables.$secondaryLight !important;
     }
+  }
+
+  &__input {
+    &--first {
+      margin: 0 !important;
+    }
+  }
+
+  &__input-error {
+    margin: 8px 0 0 0;
+    font-family: variables.$fontFamily;
+    font-style: normal;
+    font-size: variables.$captionFontSize;
+    font-weight: variables.$normal;
+    color: variables.$warningLight;
   }
 
   &__button {
@@ -103,6 +118,7 @@
     width: 100%;
     border: none;
     border-radius: 4px;
+    margin: 24px 0 0 0;
 
     &:hover {
       cursor: pointer;
@@ -126,10 +142,11 @@
     font-size: variables.$captionFontSize;
     font-weight: variables.$normal;
     color: variables.$warningDark;
-    margin: 0 0 24px 0;
+    margin: 0 0 16px 0;
     border: 1px solid variables.$warningLight;
     background-color: #fff2f1;
-    padding: 10px 12px;
+    padding: 14px 12px;
+    text-align: center;
   }
 
   &__question {

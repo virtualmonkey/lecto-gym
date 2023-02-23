@@ -1,4 +1,5 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useEffect } from 'react';
+import { useForm } from "react-hook-form";
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -13,30 +14,21 @@ const SignUp = ({
   isLoading,
   error = null,
   isAuthenticated,
-  onSubmit,
+  signUpUser,
 }) => {
-  const [name, changeName] = useState('')
-  const [email, changeEmail] = useState('');
-  const [password, changePassword] = useState('');
-  const [passwordConfirmation, changePasswordConfirmation] = useState('');
-  const passwordMismatch = password !== passwordConfirmation;
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    watch
+  } = useForm();
 
-  const handleOnPasswordChange = (event) => {
-    const regex =  new RegExp(new RegExp('^(?=.*?[A-Za-z])(?=.*?[0-9]).{8,}$'));
+  const onSubmit = (data) => signUpUser(data);
 
-    if (event.target.value === ''){
-      event.target.setCustomValidity((event.target.value !== '') ? '' : 'Por favor llena este campo');
-    } else if (event.target.value !== '') {
-      event.target.setCustomValidity((regex.test(event.target.value)) ? '' : 'La contraseña debe contener una letra, un número, y tener al menos 8 caracteres')
-    }
-   
-    changePassword(event.target.value)
-  };
+  const passwordValue = watch('password');
+  const passwordConfirmationValue = watch('passwordConfirmation');
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    onSubmit({ name, email, password, passwordConfirmation });
-  };
+  const passwordMismatch = passwordValue !== passwordConfirmationValue;
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -48,62 +40,103 @@ const SignUp = ({
     <Fragment>
       <div className="page-container">
         <div className="signup">
+          {
+            (passwordMismatch) && (
+              <div className="signup__error-message">
+                {'Las contraseñas deben coincidir'}
+              </div>
+            )
+          }
+          {error && (
+            <div className="signup__error-message">
+              {'Ha ocurrido un error, intenta de nuevo'}
+            </div>
+          )
+          }
           <div className="signup__form-container">
             <h1 className="signup__title">
               Regístrate en LectoGym
             </h1>
-            <form onSubmit={handleSubmit} className="signup__form">
+            <form onSubmit={handleSubmit(onSubmit)} className="signup__form">
               <div className="signup__field-container">
                 <input
-                  required
+                  {...register("name", {
+                    required: true,
+                  })}
                   placeholder="Nombre"
-                  className="signup__input"
+                  className="signup__input signin__input--first"
                   type="text"
-                  onChange={(event) => changeName(event.target.value)}
                 />
+                {errors.name?.type === "required" && (
+                  <div className="signin__input-error">
+                    Por favor llena este campo
+                  </div>
+                )
+                }
               </div>
               <div className="signup__field-container">
                 <input
-                  required
+                  {...register("email", {
+                    required: true,
+                    pattern: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i,
+                  })}
                   placeholder="Correo electrónico"
                   className="signup__input"
-                  type="email"
-                  onChange={(event) => changeEmail(event.target.value)}
+                  type="text"
                 />
+                {errors.email?.type === "required" && (
+                  <div className="signin__input-error">
+                    Por favor llena este campo
+                  </div>
+                )
+                }
+                {errors.email?.type === "pattern" && (
+                  <div className="signin__input-error">
+                    Por favor ingresa un email válido
+                  </div>
+                )
+                }
               </div>
               <div className="signup__field-container">
                 <input
-                  required
+                  {...register("password", {
+                    required: true,
+                    minLength: 8,
+                    pattern: /^(?=.*?[A-Za-z])(?=.*?[0-9]).{8,}$/,
+                  })}
                   placeholder="Contraseña"
                   className="signup__input"
                   type="password"
-                  onChange={(event) => handleOnPasswordChange(event)}
                 />
+                {(
+                    (errors.password?.type === "pattern" || 
+                    errors.password?.type === "minLength") ||
+                    errors.password?.type === "required"
+                  ) && (
+                  <div className="signin__input-error">
+                    La contraseña debe contener una letra, un número, y tener al menos 8 caracteres
+                  </div>
+                )
+                }
               </div>
               <div className="signup__field-container">
                 <input
-                  required
+                  {...register("passwordConfirmation", {
+                    required: true,
+                  })}
                   placeholder="Confirmar contraseña"
                   className="signup__input"
                   type="password"
-                  onChange={(event) => changePasswordConfirmation(event.target.value)}
                 />
-              </div>
-              {
-                (passwordMismatch) && (
-                  <div className="signup__error-message">
-                    {'Las contraseñas deben coincidir'}
+                {errors.passwordConfirmation?.type === "required" && (
+                  <div className="signin__input-error">
+                    Por favor llena este campo
                   </div>
                 )
-              }
-              {error && (
-                  <div className="signup__error-message">
-                    {'Ha ocurrido un error, intenta de nuevo'}
-                  </div>
-                ) 
-              }
+                }
+              </div>
               <button
-                disabled={(passwordMismatch)}
+                disabled={passwordMismatch}
                 className="signup__button"
                 type="submit"
               >
@@ -128,7 +161,8 @@ const SignUp = ({
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, ownProps) => ({
+  ...ownProps,
   isLoading: selectors.getIsAuthenticating(state),
   error: selectors.getAuthenticatingError(state),
   isAuthenticated: selectors.isAuthenticated(state),
@@ -136,7 +170,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSubmit: (authUser) => dispatch(authActions.startSignUp(authUser)),
+    signUpUser: (authUser) => dispatch(authActions.startSignUp(authUser)),
   };
 };
 

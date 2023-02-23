@@ -1,4 +1,5 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useEffect } from "react";
+import { useForm } from "react-hook-form";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { Link } from 'react-router-dom';
@@ -13,15 +14,15 @@ const SignIn = ({
   isLoading,
   error = null,
   isAuthenticated,
-  onSubmit,
+  signInUser,
 }) => {
-  const [email, changeEmail] = useState('');
-  const [password, changePassword] = useState('');
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    onSubmit({ email, password });
-  };
+  const onSubmit = (data) => signInUser(data);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -33,35 +34,53 @@ const SignIn = ({
     <Fragment>
       <div className="page-container">
         <div className="signin">
+          {error && (
+            <div className="signin__error-message">
+              {'Ha ocurrido un error, por favor intenta de nuevo'}
+            </div>
+          )
+          }
           <div className="signin__form-container">
             <h1 className="signin__title">
               Ingresa a LectoGym
             </h1>
-            <form onSubmit={handleSubmit} className="signin__form">
+            <form onSubmit={handleSubmit(onSubmit)} className="signin__form">
               <div className="signin__field-container">
                 <input
-                  required
+                  {...register("email", {
+                    required: true,
+                    pattern: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i,
+                  })}
                   placeholder="Correo electrónico"
-                  className="signin__input"
-                  type="email"
-                  onChange={(event) => changeEmail(event.target.value)}
+                  className="signin__input signin__input--first"
+                  type="text"
                 />
+                {errors.email?.type === "required" && (
+                  <div className="signin__input-error">
+                    Por favor llena este campo
+                  </div>
+                )
+                }
+                {errors.email?.type === "pattern" && (
+                  <div className="signin__input-error">
+                    Por favor ingresa un email válido
+                  </div>
+                )
+                }
               </div>
               <div className="signin__field-container">
                 <input
-                  required
+                  {...register('password', { required: true })}
                   placeholder="Contraseña"
                   className="signin__input"
                   type="password"
-                  onChange={(event) => changePassword(event.target.value)}
                 />
+                {errors.password?.type === "required" && (
+                  <div className="signin__input-error">
+                    Por favor llena este campo
+                  </div>
+                )}
               </div>
-              {error && (
-                <div className="signin__error-message">
-                  {'Ha ocurrido un error, intenta de nuevo'}
-                </div>
-                )
-              }
               <button
                 className="signin__button"
                 type="submit"
@@ -87,7 +106,8 @@ const SignIn = ({
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, ownProps) => ({
+  ...ownProps,
   isLoading: selectors.getIsAuthenticating(state),
   error: selectors.getAuthenticatingError(state),
   isAuthenticated: selectors.isAuthenticated(state),
@@ -95,7 +115,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSubmit: (authUser) => dispatch(authActions.startSignIn(authUser))
+    signInUser: (authUser) => dispatch(authActions.startSignIn(authUser))
   };
 };
 
