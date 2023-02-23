@@ -15,8 +15,8 @@ const SignIn = ({
   isAuthenticated,
   onSubmit,
 }) => {
-  const [email, changeEmail] = useState("");
-  const [password, changePassword] = useState("");
+  const [email, changeEmail] = useState('');
+  const [password, changePassword] = useState('');
 
   const handleOnEmailChange = (event) => {
     const regex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
@@ -60,6 +60,7 @@ const SignIn = ({
             <form onSubmit={handleSubmit} className="signin__form">
               <div className="signin__field-container">
                 <input
+                  required
                   placeholder="Correo electrónico"
                   className="signin__input"
                   type="email"
@@ -68,6 +69,7 @@ const SignIn = ({
               </div>
               <div className="signin__field-container">
                 <input
+                  required
                   placeholder="Contraseña"
                   className="signin__input"
                   type="password"
