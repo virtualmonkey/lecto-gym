@@ -18,26 +18,6 @@ const SignIn = ({
   const [email, changeEmail] = useState('');
   const [password, changePassword] = useState('');
 
-  const handleOnEmailChange = (event) => {
-    const regex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-
-    if (event.target.value === ''){
-      event.target.setCustomValidity((event.target.value !== '') ? '' : 'Por favor llena este campo');
-    } else if (event.target.value) {
-      event.target.setCustomValidity((regex.test(event.target.value)) ? '' : 'Por favor ingresa un email')
-    }
-   
-    changeEmail(event.target.value);
-  };
-
-  const handleOnPasswordChange = (event) => {
-    if (event.target.value === ''){
-      event.target.setCustomValidity((event.target.value !== '') ? '' : 'Por favor llena este campo');
-    }
-   
-    changePassword(event.target.value);
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
     onSubmit({ email, password });
@@ -64,7 +44,7 @@ const SignIn = ({
                   placeholder="Correo electrónico"
                   className="signin__input"
                   type="email"
-                  onChange={(event) => handleOnEmailChange(event)}
+                  onChange={(event) => changeEmail(event.target.value)}
                 />
               </div>
               <div className="signin__field-container">
@@ -73,14 +53,14 @@ const SignIn = ({
                   placeholder="Contraseña"
                   className="signin__input"
                   type="password"
-                  onChange={(event) => handleOnPasswordChange(event)}
+                  onChange={(event) => changePassword(event.target.value)}
                 />
               </div>
               {error && (
                 <div className="signin__error-message">
                   {'Ha ocurrido un error, intenta de nuevo'}
                 </div>
-              )
+                )
               }
               <button
                 className="signin__button"

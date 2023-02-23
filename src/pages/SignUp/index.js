@@ -21,40 +21,16 @@ const SignUp = ({
   const [passwordConfirmation, changePasswordConfirmation] = useState('');
   const passwordMismatch = password !== passwordConfirmation;
 
-  const handleOnNameChange = (event) => {
-    event.target.setCustomValidity((event.target.value !== '') ? '' : 'Por favor llena este campo');
-
-    changeName(event.target.value)
-  };
-
-  const handleOnEmailChange = (event) => {
-    const regex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-
-    if (event.target.value === ''){
-      event.target.setCustomValidity((event.target.value !== '') ? '' : 'Por favor llena este campo');
-    } else if (event.target.value) {
-      event.target.setCustomValidity((regex.test(event.target.value)) ? '' : 'Por favor ingresa un email')
-    }
-   
-    changeEmail(event.target.value)
-  };
-
   const handleOnPasswordChange = (event) => {
     const regex =  new RegExp(new RegExp('^(?=.*?[A-Za-z])(?=.*?[0-9]).{8,}$'));
 
     if (event.target.value === ''){
       event.target.setCustomValidity((event.target.value !== '') ? '' : 'Por favor llena este campo');
-    } else if (event.target.value) {
+    } else if (event.target.value !== '') {
       event.target.setCustomValidity((regex.test(event.target.value)) ? '' : 'La contraseña debe contener una letra, un número, y tener al menos 8 caracteres')
     }
    
     changePassword(event.target.value)
-  };
-
-  const handleOnPasswordConfirmationChange = (event) => {
-    event.target.setCustomValidity((event.target.value !== '') ? '' : 'Por favor llena este campo');
-
-    changePasswordConfirmation(event.target.value)
   };
 
   const handleSubmit = (event) => {
@@ -83,7 +59,7 @@ const SignUp = ({
                   placeholder="Nombre"
                   className="signup__input"
                   type="text"
-                  onChange={(event) => handleOnNameChange(event)}
+                  onChange={(event) => changeName(event.target.value)}
                 />
               </div>
               <div className="signup__field-container">
@@ -92,7 +68,7 @@ const SignUp = ({
                   placeholder="Correo electrónico"
                   className="signup__input"
                   type="email"
-                  onChange={(event) => handleOnEmailChange(event)}
+                  onChange={(event) => changeEmail(event.target.value)}
                 />
               </div>
               <div className="signup__field-container">
@@ -110,7 +86,7 @@ const SignUp = ({
                   placeholder="Confirmar contraseña"
                   className="signup__input"
                   type="password"
-                  onChange={(event) => handleOnPasswordConfirmationChange(event)}
+                  onChange={(event) => changePasswordConfirmation(event.target.value)}
                 />
               </div>
               {
