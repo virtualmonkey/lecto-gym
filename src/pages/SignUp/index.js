@@ -149,7 +149,6 @@ const SignUp = ({
             <Link
               className="signup__link"
               to="/login"
-              title="Signin"
             >
               Ingresar
             </Link>

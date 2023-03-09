@@ -6,6 +6,9 @@ import {
   SIGNUP_USER_FAILED,
   SIGNUP_USER_COMPLETED,
   SIGNOUT_USER_COMPLETED,
+  EDIT_USER_STARTED,
+  EDIT_USER_COMPLETED,
+  EDIT_USER_FAILED
 } from '../types/auth';
 
 // TODO: check if the shape of the payload is correct
@@ -43,4 +46,3 @@ export const failSignUp = error => ({
 export const completeSignOut = () => ({
   type: SIGNOUT_USER_COMPLETED,
 });
-

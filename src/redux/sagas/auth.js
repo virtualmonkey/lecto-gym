@@ -4,8 +4,8 @@ import * as actions from '../actions/auth';
 import * as types from '../types/auth';
 
 // TODO: change API route
-const LOGIN_API_ROUTE = 'https://63f3bee0fe3b595e2ee89e0a.mockapi.io/api/v1/login';
-const SIGNUP_API_ROUTE = 'https://63f3bee0fe3b595e2ee89e0a.mockapi.io/api/v1/signup';
+const LOGIN_API_ROUTE = 'https://jsonplaceholder.typicode.com/users?id=1';
+const SIGNUP_API_ROUTE = 'https://jsonplaceholder.typicode.com/users?id=1';
 
 // TODO: fix the conditionals here to fit the shape of the data response
 export function* signIn(action) {
@@ -31,11 +31,11 @@ export function* signIn(action) {
         const authUser = data;
         yield put(actions.completeSignIn(authUser));
       } else {
-        actions.failSignIn('Could not fetch user with given credentials');
+        yield put(actions.failSignIn('Could not fetch user with given credentials'));
       }
     } else {
       // TODO: change error messages
-      actions.failSignIn('Could not fetch user due to an API error');
+      yield put(actions.failSignIn('Could not fetch user due to an API error'));
     }
   } catch (error) {
     yield put(actions.failSignIn(error));
@@ -65,11 +65,11 @@ export function* signUp(action) {
         const authUser = data;
         yield put(actions.completeSignUp(authUser));
       } else {
-        actions.failSignUp('Could not sign up user in database');
+        yield put(actions.failSignUp('Could not sign up user in database'));
       }
     } else {
       // TODO: change error messages
-      actions.failSignUp('Could not sign up user due to API error');
+      yield put(actions.failSignUp('Could not sign up user due to API error'));
     }
 
   } catch (error) {

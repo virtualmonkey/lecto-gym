@@ -18,7 +18,6 @@ const Nav = ({
         <Link
           className='navbar__link'
           to="/"
-          title="Home"
         >
           <img src={logo} alt='lectogym-logo' />
         </Link>
@@ -28,7 +27,6 @@ const Nav = ({
           <Link
             className='navbar__link'
             to="/login"
-            title="Login"
           >
             Ingresar
           </Link>
@@ -37,7 +35,6 @@ const Nav = ({
           <Link
             className='navbar__link'
             to="/signup"
-            title="SignUp"
           >
             Regístrate
           </Link>
@@ -46,16 +43,23 @@ const Nav = ({
           <Link
             className='navbar__link'
             to="/dashboard"
-            title="Dashboard"
           >
             Dashboard
+          </Link>
+        )}
+        {/* TODO: get rid of this before PR */}
+        {authUser && (
+          <Link
+            className='navbar__link'
+            to="/initial-test-intro"
+          >
+            Initial Test
           </Link>
         )}
         {authUser && (
           <Link
             className='navbar__link navbar__link--warning'
             to="/"
-            title="Sign Out"
             onClick={() => onSignOut()}
           >
             Cerrar sesión

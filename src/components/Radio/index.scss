@@ -1,0 +1,51 @@
+@use '../../utils/styles/variables' as variables;
+
+.radio {
+  border-radius: 4px;
+  width: 100%;
+  max-width: calc(50% - 8px);
+  padding: 16px 24px;
+  outline: 1px solid variables.$disabled;
+  margin: 8px 0;
+  box-sizing: border-box;
+  position: relative;
+
+  &__input[type="radio"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    z-index:100;
+    border-radius: 4px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__label {
+    font-family: variables.$fontFamily;
+    font-style: normal;
+    font-size: variables.$pFontSize;
+    font-weight: variables.$medium;
+    color: variables.$textDark;
+  }
+
+  &:hover {
+    outline: 1px solid variables.$secondaryDark;
+  }
+
+  &--checked {
+    background-color: variables.$secondaryDark;
+    outline: 1px solid variables.$secondaryDark;
+  }
+
+  &--checked & {
+    &__label {
+      color: variables.$textLight;
+    }
+  }
+}

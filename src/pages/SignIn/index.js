@@ -94,7 +94,6 @@ const SignIn = ({
             <Link
               className="signin__link"
               to="/signup"
-              title="Signup"
             >
               Crear una cuenta
             </Link>
