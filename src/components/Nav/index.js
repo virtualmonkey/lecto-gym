@@ -9,7 +9,7 @@ import * as authActions from '../../redux/actions/auth';
 import * as selectors from '../../redux/rootReducer';
 
 const Nav = ({
-  authUser,
+  isAuthenticated,
   onSignOut
 }) => {
   return (
@@ -24,7 +24,7 @@ const Nav = ({
         </Link>
       </div>
       <div className='navbar__right'>
-        {!authUser && (
+        {!isAuthenticated && (
           <Link
             className='navbar__link'
             to="/login"
@@ -33,7 +33,7 @@ const Nav = ({
             Ingresar
           </Link>
         )}
-        {!authUser && (
+        {!isAuthenticated && (
           <Link
             className='navbar__link'
             to="/signup"
@@ -42,7 +42,7 @@ const Nav = ({
             Regístrate
           </Link>
         )}
-        {authUser && (
+        {isAuthenticated && (
           <Link
             className='navbar__link'
             to="/dashboard"
@@ -51,7 +51,7 @@ const Nav = ({
             Dashboard
           </Link>
         )}
-        {authUser && (
+        {isAuthenticated && (
           <Link
             className='navbar__link navbar__link--warning'
             to="/"
@@ -67,7 +67,7 @@ const Nav = ({
 };
 
 const mapStateToProps = (state) => ({
-  authUser: selectors.getAuthUser(state),
+  isAuthenticated: selectors.isAuthenticated(state),
 });
 
 const mapDispatchToProps = dispatch => {

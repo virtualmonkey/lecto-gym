@@ -1,31 +1,75 @@
 import * as types from '../types/auth';
 import { combineReducers } from 'redux';
 
-const INITIAL_STATE = {
-  user: null,
-};
-
-const account = (state = INITIAL_STATE, action) => {
+const account = (state = null, action) => {
   switch (action.type) {
-    case types.SIGNUP_USER_COMPLETED: {
-      return {
+    case types.GET_USER_COMPLETED: {
+      return  {
         ...state,
-        user: action.payload.user
-      }
-    }
-
-    case types.SIGNIN_USER_COMPLETED: {
-      return {
-        ...state,
-        user: action.payload.user
+        ...action.payload.user
       }
     }
 
     case types.SIGNOUT_USER_COMPLETED: {
-      return {
-        ...state,
-        user: null,
-      }
+      return null
+    }
+
+    default:
+      return state;
+  }
+};
+
+const isGettingUser = (state = false, action) => {
+  switch(action.type) {
+    case types.GET_USER_STARTED: {
+      return true;
+    }
+    case types.GET_USER_COMPLETED:
+    case types.SIGNOUT_USER_COMPLETED: {
+      return false;
+    }
+    case types.GET_USER_FAILED: {
+      return false;
+    }
+
+    default: {
+      return false;
+    }
+  }
+};
+
+const gettingUserError = (state = null, action) => {
+  switch(action.type) {
+    case types.GET_USER_STARTED: {
+      return null;
+    }
+
+    case types.GET_USER_COMPLETED: 
+    case types.SIGNOUT_USER_COMPLETED: {
+      return null;
+    }
+
+    case types.GET_USER_FAILED: {
+      return action.payload.error;
+    }
+
+    default:
+      return state;
+  }
+};
+
+const token = (state = null, action) => {
+  switch (action.type) {
+    case types.SIGNUP_USER_COMPLETED: {
+      return action.payload.token
+    }
+
+    case types.SIGNIN_USER_COMPLETED: {
+      return action.payload.token
+    }
+
+    case types.SIGNOUT_USER_COMPLETED: {
+      return null
     }
 
     default:
@@ -74,13 +118,18 @@ const error = (state = null, action) => {
 
 const auth = combineReducers({
   account,
+  isGettingUser,
+  gettingUserError,
+  token,
   isAuthenticating,
   error,
 });
 
 export default auth;
 
+export const getToken = state => state.token;
+export const getAuthUser = state => state.account ? state.account : null;
+export const getIsGettingUser = state => state.isGettingUser;
+export const getIsGettingUserError = state => state.gettingUserError;
 export const getIsAuthenticating = state => state.isAuthenticating;
 export const getAuthenticatingError = state => state.error;
-export const getAuthUser = state => state.account ? state.account.user : null;
-export const getAuthEmail = state => state.account ? state.account.user.email : null;
