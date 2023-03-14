@@ -1,0 +1,10 @@
+@use '../../utils/styles/variables' as variables;
+
+.timer {
+  font-family: variables.$fontFamily;
+  font-style: normal;
+  font-weight: variables.$medium;
+  font-size: variables.$h6FontSize;
+  text-decoration: none;
+  color: variables.$primaryDark;
+}

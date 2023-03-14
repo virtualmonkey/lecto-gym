@@ -1,0 +1,37 @@
+@use '../../utils/styles/variables' as variables;
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../../utils/images/banner-image.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: calc(100vh - 144px);
+  padding: 0 170px;
+}
+
+.home {
+  &__title {
+    color: variables.$textLight;
+    display: inline-block;
+    font-family: variables.$fontFamily;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: variables.$bold;
+    margin: 0 0 24px 0;
+    text-align: center;
+  }
+
+  &__subtitle {
+    color: variables.$textLight;
+    font-family: variables.$fontFamily;
+    font-size: variables.$h5FontSize;
+    font-style: normal;
+    font-weight: variables.$normal;
+    margin: 0;
+    max-width: 600px;
+    text-align: center;
+  }
+}

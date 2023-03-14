@@ -1,0 +1,19 @@
+@use '../../utils/styles/variables' as variables;
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 170px;
+  background-color: variables.$primaryLight;
+
+  &__text {
+    font-family: variables.$fontFamily;
+    font-style: normal;
+    font-weight: variables.$normal;
+    font-size: variables.$pFontSize;
+    line-height: 20px;
+    color: variables.$textLight;
+  }
+}
