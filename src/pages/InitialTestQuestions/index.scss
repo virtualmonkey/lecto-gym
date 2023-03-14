@@ -1,5 +1,10 @@
 @use '../../utils/styles/variables' as variables;
 
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
 .page-container {
   &--initial-test-questions {
     align-items: center;
@@ -127,6 +132,27 @@
       cursor: pointer;
       background-color: #1C5385;
     }
+  }
+
+  &__error-message {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    z-index: 999;
+    animation: fadeIn 0.5s;
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 320px;
+    font-family: variables.$fontFamily;
+    font-style: normal;
+    font-size: variables.$captionFontSize;
+    font-weight: variables.$normal;
+    color: variables.$warningDark;
+    border: 1px solid variables.$warningLight;
+    background-color: #fff2f1;
+    padding: 14px 12px;
+    text-align: center;
   }
 
   & hr {

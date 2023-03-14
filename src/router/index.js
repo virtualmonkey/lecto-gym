@@ -18,22 +18,21 @@ import InitialTestQuestions from '../pages/InitialTestQuestions';
 //Components
 import Nav from '../components/Nav';
 
-// TODO: restrict routes so that only authenticated users can reach them, otherwise redirect
-const RestrictedRoute = ({ component: Component, authUser, ...props }) => (
+// TODO: change this redirect to a 404/not found page
+const RestrictedRoute = ({ component: Component, isAuthenticated, ...props }) => (
   <Route
     {...props}
     render={props =>
-      authUser ? <Component {...props} /> : <Redirect to="/" />
+      isAuthenticated ? <Component {...props} /> : <Redirect to="/" />
     }
   />
 );
 
 const RouterApp = ({
-  authUser
+  isAuthenticated
 }) => {
   return (
     <Fragment>
-      {/* TODO: add a condition not to show the nav based on if the user is in the initial test/final test */}
       <Nav />
       <Switch>
         <Route exact path="/" component={Home} />
@@ -43,31 +42,31 @@ const RouterApp = ({
           exact
           path={`/dashboard`}
           component={Dashboard}
-          authUser={authUser}
+          isAuthenticated={isAuthenticated}
         />
         <RestrictedRoute
           exact
           path={`/tutorial`}
           component={Tutorial}
-          authUser={authUser}
+          isAuthenticated={isAuthenticated}
         />
         <RestrictedRoute
           exact
           path={`/initial-test-intro`}
           component={InitialTestIntro}
-          authUser={authUser}
+          isAuthenticated={isAuthenticated}
         />
         <RestrictedRoute
           exact
           path={`/initial-test-lecture`}
           component={InitialTestLecture}
-          authUser={authUser}
+          isAuthenticated={isAuthenticated}
         />
         <RestrictedRoute
           exact
           path={`/initial-test-questions`}
           component={InitialTestQuestions}
-          authUser={authUser}
+          isAuthenticated={isAuthenticated}
         />
         <Redirect to="/" />
       </Switch>
@@ -76,7 +75,7 @@ const RouterApp = ({
 }
 
 const mapStateToProps = (state) => ({
-  authUser: selectors.getAuthUser(state)
+  isAuthenticated: selectors.isAuthenticated(state)
 });
 
 export default withRouter(connect(mapStateToProps)(RouterApp));

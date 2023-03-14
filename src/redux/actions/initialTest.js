@@ -4,9 +4,9 @@ import {
   SUBMIT_INITIAL_TEST_COMPLETED,
 } from '../types/initialTest';
 
-export const startSubmitInitialTest = ({ score, time, wpm, date }) => ({
+export const startSubmitInitialTest = (percentage, time, wordsPerMinute, type = 1) => ({
   type: SUBMIT_INITIAL_TEST_STARTED,
-  payload: { score, time, wpm, date }
+  payload: { percentage, time, wordsPerMinute, type }
 });
 
 export const completeSubmitInitialTest = () => ({

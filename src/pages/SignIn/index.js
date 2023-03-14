@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { Link } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import './index.scss'
 
 import * as authActions from '../../redux/actions/auth';
@@ -10,12 +11,12 @@ import * as selectors from '../../redux/rootReducer';
 import Footer from "../../components/Footer";
 
 const SignIn = ({
-  history,
   isLoading,
   error = null,
-  isAuthenticated,
+  authUser,
   signInUser,
 }) => {
+  const history = useHistory();
   const {
     register,
     handleSubmit,
@@ -25,10 +26,13 @@ const SignIn = ({
   const onSubmit = (data) => signInUser(data);
 
   useEffect(() => {
-    if (isAuthenticated) {
-      history.push("/dashboard");
+    if (authUser) {
+      // TODO: logic to show final-test-intro
+      if (!authUser.has_completed_tutorial) history.push('/tutorial');
+      else if (!authUser.has_completed_initial_test) history.push('/initial-test-intro');
+      else history.push('/dashboard');
     }
-  }, [isAuthenticated, history]);
+  }, [authUser, history]);
 
   return (
     <Fragment>
@@ -109,14 +113,12 @@ const mapStateToProps = (state, ownProps) => ({
   ...ownProps,
   isLoading: selectors.getIsAuthenticating(state),
   error: selectors.getAuthenticatingError(state),
-  isAuthenticated: selectors.isAuthenticated(state),
+  authUser: selectors.getAuthUser(state),
 });
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    signInUser: (authUser) => dispatch(authActions.startSignIn(authUser))
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  signInUser: (authUser) => dispatch(authActions.startSignIn(authUser))
+});
 
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SignIn));

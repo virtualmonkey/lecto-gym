@@ -31,9 +31,7 @@ const SignUp = ({
   const passwordMismatch = passwordValue !== passwordConfirmationValue;
 
   useEffect(() => {
-    if (isAuthenticated) {
-      history.push("/tutorial");
-    }
+    if (isAuthenticated) history.push("/tutorial");
   }, [isAuthenticated, history]);
 
   return (
