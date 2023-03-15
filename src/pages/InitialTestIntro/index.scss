@@ -1,14 +1,16 @@
 @use '../../utils/styles/variables' as variables;
 
 .page-container {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  height: calc(100vh - 144px);
-  justify-content: center;
+  &--initial-test-intro {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 
 .initial-test-intro {
+  margin: 80px auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

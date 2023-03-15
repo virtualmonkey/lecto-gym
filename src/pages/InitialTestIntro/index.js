@@ -1,11 +1,24 @@
-import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Fragment, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
 import './index.scss';
 
-const InitialTestIntro = () => {
+import * as selectors from '../../redux/rootReducer';
+
+const InitialTestIntro = ({
+  authUser,
+}) => {
+  const history = useHistory();
+
+  useEffect(() => {
+    if (authUser.has_completed_initial_test) {
+      history.push("/dashboard");
+    }
+  }, [authUser, history]);
+
   return (
     <Fragment>
-      <div className="page-container">
+      <div className="page-container--initial-test-intro">
         <div className="initial-test-intro">
           <h1 className="initial-test-intro__title">
             Prueba de diagnóstico
@@ -40,4 +53,8 @@ const InitialTestIntro = () => {
   );
 };
 
-export default InitialTestIntro;
+const mapStateToProps = (state) => ({
+  authUser: selectors.getAuthUser(state),
+});
+
+export default connect(mapStateToProps, null)(InitialTestIntro);

@@ -1,8 +1,8 @@
 @use '../../utils/styles/variables' as variables;
 
-@keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+@keyframes popInAndOut {
+  0%,100% { visibility: hidden; }
+  5% { visibility: visible; }
 }
 
 .page-container {
@@ -135,11 +135,13 @@
   }
 
   &__error-message {
-    position: absolute;
-    right: 16px;
-    bottom: 16px;
+    position: fixed;
+    top: 16px;
+    left: 50%;
+    transform: translate(-50%, 0);;
     z-index: 999;
-    animation: fadeIn 0.5s;
+    animation: popInAndOut 4s ease forwards;
+    -webkit-animation: popInAndOut 4s ease forwards;
     border-radius: 4px;
     box-sizing: border-box;
     width: 100%;

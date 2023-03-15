@@ -1,0 +1,136 @@
+@use '../../utils/styles/variables' as variables;
+
+@keyframes popInAndOut {
+  0%,100% { visibility: hidden; }
+  5% { visibility: visible; }
+}
+
+.page-container {
+  &--tutorial {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 170px;
+  }
+}
+
+.tutorial {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  max-width: 800px;
+  margin: 80px auto;
+  width: 100%;
+
+  &__title {
+    color: variables.$textDark;
+    font-family: variables.$fontFamily;
+    font-size: variables.$h1FontSize;
+    font-style: normal;
+    font-weight: variables.$semiBold;
+    margin: 0 auto 40px;
+    text-align: center;
+  }
+
+  &__instructions-container {
+    align-items: center;
+    background-color: variables.$white;
+    border-radius: 8px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    max-width: 800px;
+    padding: 24px 24px;
+    width: 100%;
+  }
+
+  &__instructions-title {
+    color: variables.$textDark;
+    font-family: variables.$fontFamily;
+    font-size: variables.$h4FontSize;
+    font-style: normal;
+    font-weight: variables.$bold;
+    margin: 0 0 32px;
+  }
+
+  &__instructions {
+    margin: 0 auto 32px;
+    max-width: 800px;
+    width: 100%;
+
+    p {
+      color: variables.$textDark;
+      font-family: variables.$fontFamily;
+      font-size: variables.$pFontSize;
+      font-style: normal;
+      font-weight: variables.$normal;
+      line-height: 150%;
+      margin: 0 0 16px 0 !important;
+      text-align: left;
+
+      &:last-child {
+        margin: 0 !important;
+      }
+    }
+  }
+
+  &__video {
+    border: 0px;
+    margin: 0 0 32px 0;
+  }
+
+  & hr {
+    background-color: #f4f4f4;
+    border: 1px solid #f4f4f4;
+    border-radius: 5px;
+    margin: 0 0 32px;
+    width: 100%;
+  }
+
+  &__error-message {
+    position: fixed;
+    top: 16px;
+    left: 50%;
+    transform: translate(-50%, 0);;
+    z-index: 999;
+    animation: popInAndOut 4s ease forwards;
+    -webkit-animation: popInAndOut 4s ease forwards;
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 320px;
+    font-family: variables.$fontFamily;
+    font-style: normal;
+    font-size: variables.$captionFontSize;
+    font-weight: variables.$normal;
+    color: variables.$warningDark;
+    border: 1px solid variables.$warningLight;
+    background-color: #fff2f1;
+    padding: 14px 12px;
+    text-align: center;
+  }
+
+  &__next {
+    background-color: variables.$primaryDark;
+    border: none;
+    border-radius: 4px;
+    color: variables.$textLight;
+    font-family: variables.$fontFamily;
+    font-size: variables.$aFontSize;
+    font-style: normal;
+    font-weight: variables.$semiBold;
+    margin: 0;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+
+    &:hover {
+      background-color: #1C5385;
+      cursor: pointer;
+    }
+  }
+}

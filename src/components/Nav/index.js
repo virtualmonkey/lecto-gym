@@ -42,7 +42,7 @@ const Nav = ({
             Regístrate
           </Link>
         )}
-        { canAccessDashboard && (
+        {canAccessDashboard && (
             <Link
               className='navbar__link'
               to="/dashboard"
@@ -50,15 +50,6 @@ const Nav = ({
               Dashboard
             </Link>
           )}
-        {/* TODO: get rid of this before PR */}
-        {isAuthenticated && (
-          <Link
-            className='navbar__link'
-            to="/initial-test-intro"
-          >
-            Initial Test
-          </Link>
-        )}
         {isAuthenticated && (
           <Link
             className='navbar__link navbar__link--warning'

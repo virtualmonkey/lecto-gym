@@ -2,17 +2,28 @@ import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
 import Timer from '../../components/Timer';
 import CustomLink from '../../components/CustomLink';
+import { useHistory } from "react-router-dom";
 import './index.scss';
 
 import * as timerActions from '../../redux/actions/timer';
+import * as selectors from '../../redux/rootReducer';
 
 const InitialTestLecture = ({
+  authUser,
   onStartTimer,
   onStopTimer,
 }) => {
+  const history = useHistory();
+
   useEffect(() => {
     onStartTimer();
   }, [onStartTimer]);
+
+  useEffect(() => {
+    if (authUser.has_completed_initial_test) {
+      history.push("/dashboard");
+    }
+  }, [authUser, history]);
 
   return (
     <Fragment>
@@ -126,9 +137,13 @@ const InitialTestLecture = ({
   );
 }
 
+const mapStateToProps = (state) => ({
+  authUser: selectors.getAuthUser(state),
+});
+
 const mapDispatchToProps = (dispatch) => ({
   onStartTimer: () => dispatch(timerActions.startTimer()),
   onStopTimer: () => dispatch(timerActions.stopTimer()),
 });
 
-export default connect(null, mapDispatchToProps)(InitialTestLecture);
+export default connect(mapStateToProps, mapDispatchToProps)(InitialTestLecture);
