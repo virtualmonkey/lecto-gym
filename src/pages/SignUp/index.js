@@ -36,7 +36,7 @@ const SignUp = ({
 
   return (
     <Fragment>
-      <div className="page-container">
+      <div className="page-container--signup">
         <div className="signup">
           {
             (passwordMismatch) && (

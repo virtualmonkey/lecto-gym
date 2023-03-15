@@ -3,11 +3,13 @@ import { combineReducers } from 'redux';
 import auth, * as authSelectors from './reducers/auth';
 import timer, * as timerSelectors from './reducers/timer';
 import initialTest, * as initialTestSelectors from './reducers/initialTest';
+import tutorial, * as tutorialSelectors from './reducers/tutorial';
 
 const reducer = combineReducers({
   auth,
   timer,
-  initialTest
+  initialTest,
+  tutorial,
 });
 
 export default reducer;
@@ -25,3 +27,5 @@ export const getElapsedTime = state => timerSelectors.getElapsedTime(state.timer
 export const getElapsedTimeInSeconds = state => timerSelectors.getElapsedTimeInSeconds(state.timer);
 
 export const getSumbitInitialTestError = state => initialTestSelectors.getSumbitInitialTestError(state.initialTest);
+
+export const getSumbitTutorialError = state => tutorialSelectors.getSumbitTutorialError(state.tutorial);

@@ -29,8 +29,8 @@ const InitialTestQuestions = ({
       questionName: 'question-1',
       text: "¿Para qué fue el campesino a la ciudad?",
       options: [
-        { id: 0, text: "Entregar products", isCorrect: false, selected: false },
-        { id: 1, text: "Vender sus productos", isCorrect: true, selected: false },
+        { id: 0, text: "Entregar productos", isCorrect: false, selected: false },
+        { id: 1, text: "Vender productos", isCorrect: true, selected: false },
         { id: 2, text: "Comprar productos", isCorrect: false, selected: false },
         { id: 3, text: "Entregar una encomienda", isCorrect: false, selected: false },
       ],
@@ -154,7 +154,7 @@ const InitialTestQuestions = ({
     setPercentage(parseFloat(parseFloat((score / questions.length) * 100).toFixed(2)));
     setWordsPerMinute(parseFloat(parseFloat(LECTURE_WORD_COUNT / (elapsedTimeInSeconds / 60)).toFixed(2)));
 
-  }, [showResults, score, elapsedTimeInSeconds, questions.length]);
+  }, [showResults, score, elapsedTimeInSeconds]);
 
   useEffect(() => {
     if (authUser.has_completed_initial_test) {

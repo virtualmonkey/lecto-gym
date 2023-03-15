@@ -36,7 +36,7 @@ const SignIn = ({
 
   return (
     <Fragment>
-      <div className="page-container">
+      <div className="page-container--signin">
         <div className="signin">
           {error && (
             <div className="signin__error-message">
