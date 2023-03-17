@@ -129,7 +129,7 @@
     &:disabled {
       background-color: variables.$disabled;
       color: variables.$grey;
-      cursor: initial;
+      cursor: not-allowed;
     }
   }
 

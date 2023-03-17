@@ -153,7 +153,7 @@ const InitialTestQuestions = ({
   useEffect(() => {
     setPercentage(parseFloat(parseFloat((score / questions.length) * 100).toFixed(2)));
     setWordsPerMinute(parseFloat(parseFloat(LECTURE_WORD_COUNT / (elapsedTimeInSeconds / 60)).toFixed(2)));
-
+    // eslint-disable-next-line
   }, [showResults, score, elapsedTimeInSeconds]);
 
   useEffect(() => {
