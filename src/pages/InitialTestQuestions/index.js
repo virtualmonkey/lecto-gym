@@ -7,7 +7,7 @@ import './index.scss';
 import Question from '../../components/Question';
 import Radio from '../../components/Radio';
 
-import * as initialTestActions from '../../redux/actions/initialTest';
+import * as initialTestActions from '../../redux/initialTest/initialTest.actions';
 import * as selectors from '../../redux/rootReducer';
 
 const LECTURE_WORD_COUNT = 451;

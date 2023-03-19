@@ -2,9 +2,9 @@ import { all, call, put, select, takeLatest } from 'redux-saga/effects';
 import { normalize } from 'normalizr';
 
 import { API_BASE_URL } from '../../utils/constants';
-import * as actions from '../actions/weeks';
-import * as types from '../types/weeks';
-import * as schemas from '../schemas/weeks';
+import * as actions from './weeks.actions';
+import * as types from './weeks.types';
+import * as schemas from './weeks.schemas';
 import * as selectors from '../rootReducer';
 
 const WEEKS_API_ROUTE = `${API_BASE_URL}/dashboard`;
@@ -33,13 +33,13 @@ export function* fetchWeeks(action){
           result,
         } = normalize(jsonResult, schemas.weeks);
         
-        yield put(actions.completeFetchingWeeks(weeks, result));
+        yield put(actions.completeFetchWeeks(weeks, result));
       } else {
-        yield put(actions.failFetchingWeeks("Failed to fetch weeks"))
+        yield put(actions.failFetchWeeks("Failed to fetch weeks"))
       }
     }
   } catch (error) {
-    yield put(actions.failFetchingWeeks(error));
+    yield put(actions.failFetchWeeks(error));
   }
 };
 

@@ -2,7 +2,7 @@ import {
   SUBMIT_INITIAL_TEST_STARTED,
   SUBMIT_INITIAL_TEST_FAILED,
   SUBMIT_INITIAL_TEST_COMPLETED,
-} from '../types/initialTest';
+} from './initialTest.types';
 
 export const startSubmitInitialTest = (percentage, time, wordsPerMinute, type = 1) => ({
   type: SUBMIT_INITIAL_TEST_STARTED,

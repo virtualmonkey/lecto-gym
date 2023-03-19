@@ -2,7 +2,7 @@ import {
   SUBMIT_TUTORIAL_STARTED,
   SUBMIT_TUTORIAL_FAILED,
   SUBMIT_TUTORIAL_COMPLETED,
-} from '../types/tutorial';
+} from './tutorial.types';
 
 export const startSubmitTutorial = () => ({
   type: SUBMIT_TUTORIAL_STARTED,

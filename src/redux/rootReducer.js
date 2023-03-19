@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 
-import auth, * as authSelectors from './reducers/auth';
-import timer, * as timerSelectors from './reducers/timer';
-import initialTest, * as initialTestSelectors from './reducers/initialTest';
-import tutorial, * as tutorialSelectors from './reducers/tutorial';
-import weeks, * as weeksSelectors from './reducers/weeks';
+import auth, * as authSelectors from './auth/auth.reducer';
+import timer, * as timerSelectors from './timer/timer.reducer';
+import initialTest, * as initialTestSelectors from './initialTest/initialTest.reducer';
+import tutorial, * as tutorialSelectors from './tutorial/tutorial.reducer';
+import weeks, * as weeksSelectors from './weeks/weeks.reducer';
 
 const reducer = combineReducers({
   auth,

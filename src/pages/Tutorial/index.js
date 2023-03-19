@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import './index.scss';
 
-import * as tutorialActions from '../../redux/actions/tutorial';
+import * as tutorialActions from '../../redux/tutorial/tutorial.actions';
 import * as selectors from '../../redux/rootReducer';
 
 const Tutorial = ({

@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import * as types from '../types/timer';
+import * as types from './timer.types';
 
 const time = (state = 0, action) => {
   switch (action.type) {

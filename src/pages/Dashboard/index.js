@@ -4,7 +4,7 @@ import './index.scss';
 
 import Week from '../../components/Week';
 
-import * as weeksActions from '../../redux/actions/weeks';
+import * as weeksActions from '../../redux/weeks/weeks.actions';
 import * as selectors from '../../redux/rootReducer';
 
 const Dashboard = ({
@@ -55,7 +55,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchWeeks: () => dispatch(weeksActions.startFetchingWeeks()),
+  fetchWeeks: () => dispatch(weeksActions.startFetchWeeks()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

@@ -3,7 +3,7 @@ import {
   STOP_TIMER,
   RESET_TIMER,
   TICK_TIMER,
-} from '../types/timer';
+} from './timer.types';
 
 export const startTimer = () => ({
   type: START_TIMER,

@@ -9,7 +9,7 @@ import {
   GET_USER_STARTED,
   GET_USER_FAILED,
   GET_USER_COMPLETED
-} from '../types/auth';
+} from './auth.types';
 
 
 export const startSignIn = ({ email, password }) => ({

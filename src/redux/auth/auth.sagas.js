@@ -2,8 +2,8 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 import { v4 as uuidv4 } from 'uuid';
 
 import { API_BASE_URL } from '../../utils/constants';
-import * as actions from '../actions/auth';
-import * as types from '../types/auth';
+import * as actions from './auth.actions';
+import * as types from './auth.types';
 
 const LOGIN_API_ROUTE = `${API_BASE_URL}/sanctum/token`;
 const SIGNUP_API_ROUTE = `${API_BASE_URL}/register`;

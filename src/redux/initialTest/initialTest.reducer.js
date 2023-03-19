@@ -1,13 +1,13 @@
-import * as types from '../types/tutorial';
+import * as types from './initialTest.types';
 import { combineReducers } from 'redux';
 
 const error = (state = null, action) => {
   switch (action.type) {
-      case types.SUBMIT_TUTORIAL_FAILED: {
+      case types.SUBMIT_INITIAL_TEST_FAILED: {
           return action.payload.error;
       }
-      case types.SUBMIT_TUTORIAL_STARTED:
-      case types.SUBMIT_TUTORIAL_COMPLETED: {
+      case types.SUBMIT_INITIAL_TEST_STARTED:
+      case types.SUBMIT_INITIAL_TEST_COMPLETED: {
           return null;
       }
       default: {
@@ -20,4 +20,4 @@ export default combineReducers({
   error,
 });
 
-export const getSumbitTutorialError = (state) => state.error;
+export const getSumbitInitialTestError = (state) => state.error;

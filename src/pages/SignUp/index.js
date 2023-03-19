@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import './index.scss'
 
-import * as authActions from '../../redux/actions/auth';
+import * as authActions from '../../redux/auth/auth.actions';
 import * as selectors from '../../redux/rootReducer';
 import Footer from "../../components/Footer";
 

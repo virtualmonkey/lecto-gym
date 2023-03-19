@@ -5,7 +5,7 @@ import CustomLink from '../../components/CustomLink';
 import { useHistory } from "react-router-dom";
 import './index.scss';
 
-import * as timerActions from '../../redux/actions/timer';
+import * as timerActions from '../../redux/timer/timer.actions';
 import * as selectors from '../../redux/rootReducer';
 
 const InitialTestLecture = ({

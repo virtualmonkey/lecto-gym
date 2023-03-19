@@ -1,9 +1,9 @@
 import { all, call, put, select, takeLatest } from 'redux-saga/effects';
 
 import { API_BASE_URL } from '../../utils/constants';
-import * as authActions from '../actions/auth';
-import * as actions from '../actions/tutorial';
-import * as types from '../types/tutorial';
+import * as authActions from '../auth/auth.actions';
+import * as actions from './tutorial.actions';
+import * as types from './tutorial.types';
 import * as selectors from '../rootReducer';
 
 const SUBMIT_TUTORIAL_API_ROUTE = `${API_BASE_URL}/tests`;
