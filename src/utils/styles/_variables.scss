@@ -40,3 +40,10 @@ $bold: 700;
 // fontFamily
 
 $fontFamily: 'Inter', sans-serif;
+
+// keyframes
+
+@keyframes popInAndOut {
+  0%,100% { visibility: hidden; }
+  5% { visibility: visible; }
+}

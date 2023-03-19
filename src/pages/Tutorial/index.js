@@ -14,8 +14,10 @@ const Tutorial = ({
   const history = useHistory();
 
   useEffect(() => {
-    if (authUser.has_completed_tutorial) {
-      history.push("/initial-test-intro");
+    if (authUser !== null) {
+      if (authUser.has_completed_tutorial) {
+        history.push("/initial-test-intro");
+      }
     }
   }, [authUser, history]);
 
