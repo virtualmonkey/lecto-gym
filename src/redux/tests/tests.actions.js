@@ -1,8 +1,24 @@
 import {
+  SUBMIT_TUTORIAL_STARTED,
+  SUBMIT_TUTORIAL_FAILED,
+  SUBMIT_TUTORIAL_COMPLETED,
   SUBMIT_INITIAL_TEST_STARTED,
   SUBMIT_INITIAL_TEST_FAILED,
   SUBMIT_INITIAL_TEST_COMPLETED,
-} from './initialTest.types';
+} from './tests.types';
+
+export const startSubmitTutorial = () => ({
+  type: SUBMIT_TUTORIAL_STARTED,
+});
+
+export const completeSubmitTutorial = () => ({
+  type: SUBMIT_TUTORIAL_COMPLETED,
+});
+
+export const failSubmitTutorial = (error) => ({
+  type: SUBMIT_TUTORIAL_FAILED,
+  payload: { error }
+});
 
 export const startSubmitInitialTest = (percentage, time, wordsPerMinute, type = 1) => ({
   type: SUBMIT_INITIAL_TEST_STARTED,

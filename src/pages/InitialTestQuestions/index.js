@@ -7,7 +7,7 @@ import './index.scss';
 import Question from '../../components/Question';
 import Radio from '../../components/Radio';
 
-import * as initialTestActions from '../../redux/initialTest/initialTest.actions';
+import * as testsActions from '../../redux/tests/tests.actions';
 import * as selectors from '../../redux/rootReducer';
 
 const LECTURE_WORD_COUNT = 451;
@@ -275,7 +275,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  submitInitialTest: (percentage, time, wordsPerMinute, type) => dispatch(initialTestActions.startSubmitInitialTest(percentage, time, wordsPerMinute, type))
+  submitInitialTest: (percentage, time, wordsPerMinute, type) => dispatch(testsActions.startSubmitInitialTest(percentage, time, wordsPerMinute, type))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(InitialTestQuestions);
