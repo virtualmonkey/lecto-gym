@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import './index.scss';
 
 import * as selectors from '../../redux/rootReducer';
-import * as timerActions from '../../redux/actions/timer';
+import * as timerActions from '../../redux/timer/timer.actions';
 
 const Timer = ({
   isRunning,

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import './index.scss';
 
-import * as tutorialActions from '../../redux/actions/tutorial';
+import * as testsActions from '../../redux/tests/tests.actions';
 import * as selectors from '../../redux/rootReducer';
 
 const Tutorial = ({
@@ -74,7 +74,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  submitTutorial: () => dispatch(tutorialActions.startSubmitTutorial())
+  submitTutorial: () => dispatch(testsActions.startSubmitTutorial())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Tutorial);;

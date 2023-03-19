@@ -1,16 +1,14 @@
 import { combineReducers } from 'redux';
 
-import auth, * as authSelectors from './reducers/auth';
-import timer, * as timerSelectors from './reducers/timer';
-import initialTest, * as initialTestSelectors from './reducers/initialTest';
-import tutorial, * as tutorialSelectors from './reducers/tutorial';
-import weeks, * as weeksSelectors from './reducers/weeks';
+import auth, * as authSelectors from './auth/auth.reducer';
+import timer, * as timerSelectors from './timer/timer.reducer';
+import tests, * as testsSelectors from './tests/tests.reducer';
+import weeks, * as weeksSelectors from './weeks/weeks.reducer';
 
 const reducer = combineReducers({
   auth,
   timer,
-  initialTest,
-  tutorial,
+  tests,
   weeks,
 });
 
@@ -28,9 +26,8 @@ export const getIsRunning = state => timerSelectors.getIsRunning(state.timer);
 export const getElapsedTime = state => timerSelectors.getElapsedTime(state.timer);
 export const getElapsedTimeInSeconds = state => timerSelectors.getElapsedTimeInSeconds(state.timer);
 
-export const getSumbitInitialTestError = state => initialTestSelectors.getSumbitInitialTestError(state.initialTest);
-
-export const getSumbitTutorialError = state => tutorialSelectors.getSumbitTutorialError(state.tutorial);
+export const getSumbitTutorialError = state => testsSelectors.getSumbitTutorialError(state.tests);
+export const getSumbitInitialTestError = state => testsSelectors.getSumbitInitialTestError(state.tests);
 
 export const getWeek = (state, id) => weeksSelectors.getWeek(state.weeks, id);
 export const getWeeks = state => weeksSelectors.getWeeks(state.weeks);

@@ -1,4 +1,4 @@
-import * as types from '../types/auth';
+import * as types from './auth.types';
 import { combineReducers } from 'redux';
 
 const account = (state = null, action) => {

@@ -1,4 +1,4 @@
-import * as types from '../types/weeks';
+import * as types from './weeks.types';
 import { combineReducers } from 'redux';
 
 const byId = (state = {}, action) => {
