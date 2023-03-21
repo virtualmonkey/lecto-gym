@@ -1,5 +1,6 @@
 import * as types from './weeks.types';
 import { combineReducers } from 'redux';
+import { indexOf } from 'lodash';
 
 const byId = (state = {}, action) => {
   switch(action.type) {
@@ -77,5 +78,15 @@ export default combineReducers({
 
 export const getWeek = (state, id) => state.byId[id];
 export const getWeeks = state => state.order.map(id => getWeek(state, id));
+export const isWeekUnlocked = (state, id) => {
+  const weekOrderIndex = indexOf(state.order, id);
+
+  if (weekOrderIndex > 0) {
+    if (getWeek(state, state.order[weekOrderIndex - 1]).progression <= 35) return false
+  }
+
+  return true;
+}
+export const isWeekCompleted = (state, id) => state.byId[id].progression === 35;
 export const getIsFetchingWeeks = state => state.isFetchingWeeks;
 export const getFetchingWeeksError = state => state.fetchWeeksError;

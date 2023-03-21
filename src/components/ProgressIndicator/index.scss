@@ -1,0 +1,33 @@
+@use '../../utils/styles/variables' as variables;
+
+.progress-indicator {
+  background-color: variables.$white;
+  display: block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  text-align: center;
+  font-family: variables.$fontFamily;
+  font-style: normal;
+  font-weight: variables.$semiBold;
+  font-size: variables.$pFontSize;
+  line-height: 40px;
+  text-decoration: none;
+  color: variables.$primaryDark;
+
+  &--0 {
+    background-color: variables.$white;
+  }
+
+  &--1 {
+    background-color: #FF9D9D;
+  }
+
+  &--2 {
+    background-color: #fde68a;
+  }
+
+  &--3 {
+    background-color: #addece;
+  }
+}

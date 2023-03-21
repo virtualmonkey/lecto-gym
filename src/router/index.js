@@ -15,6 +15,7 @@ import InitialTestIntro from '../pages/InitialTestIntro';
 import InitialTestLecture from '../pages/InitialTestLecture';
 import InitialTestQuestions from '../pages/InitialTestQuestions';
 import Week from '../pages/Week';
+import Exercise from '../pages/Exercise';
 
 //Components
 import Nav from '../components/Nav';
@@ -73,6 +74,12 @@ const RouterApp = ({
           exact
           path={`/week/:id`}
           component={Week}
+          isAuthenticated={isAuthenticated}
+        />
+        <RestrictedRoute
+          exact
+          path={`/exercise/:id`}
+          component={Exercise}
           isAuthenticated={isAuthenticated}
         />
         <Redirect to="/" />

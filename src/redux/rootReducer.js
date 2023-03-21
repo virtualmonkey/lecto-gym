@@ -4,12 +4,14 @@ import auth, * as authSelectors from './auth/auth.reducer';
 import timer, * as timerSelectors from './timer/timer.reducer';
 import tests, * as testsSelectors from './tests/tests.reducer';
 import weeks, * as weeksSelectors from './weeks/weeks.reducer';
+import week, * as weekSelectors from './week/week.reducer';
 
 const reducer = combineReducers({
   auth,
   timer,
   tests,
   weeks,
+  week,
 });
 
 export default reducer;
@@ -31,5 +33,17 @@ export const getSumbitInitialTestError = state => testsSelectors.getSumbitInitia
 
 export const getWeek = (state, id) => weeksSelectors.getWeek(state.weeks, id);
 export const getWeeks = state => weeksSelectors.getWeeks(state.weeks);
+export const isWeekUnlocked = (state, id) => weeksSelectors.isWeekUnlocked(state.weeks, id);
+export const isWeekCompleted = (state, id) => weeksSelectors.isWeekCompleted(state.weeks, id);
 export const getIsFetchingWeeks = state => weeksSelectors.getIsFetchingWeeks(state.weeks);
 export const getFetchingWeeksError = state => weeksSelectors.getFetchingWeeksError(state.weeks);
+
+export const getWeekId = (state) => weekSelectors.getWeekId(state.week);
+export const getExercise = (state, id) => weekSelectors.getExercise(state.week, id);
+export const getExercisesFromArray = (state, array) => weekSelectors.getExercisesFromArray(state.week, array);
+export const getDay = (state, id) => weekSelectors.getDay(state.week, id);
+export const getIsDayUnlocked = (state, previousDayId) => weekSelectors.getIsDayUnlocked(state.week, previousDayId);
+export const getIsDayCompleted = (state, id) => weekSelectors.getIsDayCompleted(state.week, id);
+export const getDays = (state) => weekSelectors.getDays(state.week);
+export const getIsFetchingWeek = (state) => weekSelectors.getIsFetchingWeek(state.week);
+export const getFetchWeekError = (state) => weekSelectors.getFetchWeekError(state.week);
