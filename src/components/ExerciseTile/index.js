@@ -5,11 +5,13 @@ import { getExerciseTypeString } from '../../utils/functions';
 import CustomLink from '../CustomLink';
 import ProgressIndicator from '../ProgressIndicator';
 
+// TODO: pass itemId as prop, and in the CustomLink pass the id and other props as a prop
 const ExerciseTile = ({
   id,
+  itemId,
   week,
   day,
-  tool,
+  tools,
   name,
   type,
   progression,
@@ -24,7 +26,7 @@ const ExerciseTile = ({
         <b>Tipo: </b>{getExerciseTypeString(type)}
       </div>
       <div className="exercise-tile__tools">
-        <b>Herramientas: </b>{tool}
+        <b>Herramientas: </b>{tools}
       </div>
       <div className="exercise-tile__actions">
         <ProgressIndicator
@@ -36,7 +38,7 @@ const ExerciseTile = ({
             `exercise-tile__link 
             ${(disabled) ? 'exercise-tile__link--disabled ' : ''}
           `}
-          to={`/exercise/${id}`}
+          to={`/exercise/${itemId}/${id}`}
         >
           Realizar Ejercicio
         </CustomLink>

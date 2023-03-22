@@ -78,7 +78,7 @@ const RouterApp = ({
         />
         <RestrictedRoute
           exact
-          path={`/exercise/:id`}
+          path={`/exercise/:itemId/:userItemId`}
           component={Exercise}
           isAuthenticated={isAuthenticated}
         />
@@ -89,7 +89,7 @@ const RouterApp = ({
 }
 
 const mapStateToProps = (state) => ({
-  isAuthenticated: selectors.isAuthenticated(state)
+  isAuthenticated: selectors.isAuthenticated(state),
 });
 
 export default withRouter(connect(mapStateToProps)(RouterApp));

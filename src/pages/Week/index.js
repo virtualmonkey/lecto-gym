@@ -34,7 +34,7 @@ const Week = ({
             </div>
           )}
           <h1 className="week__title">
-            {`Semana ${weekId}`}
+            {weekId ? `Semana ${weekId}` : 'Cargando...'}
           </h1>
           <div className="week__days-container">
             {days.length > 0 && (days.map((day, index) =>
@@ -49,9 +49,10 @@ const Week = ({
                   <ExerciseTile
                     key={exercise.id}
                     id={exercise.id}
+                    itemId={exercise.itemId}
                     week={exercise.week}
                     day={exercise.day}
-                    tool={exercise.tool}
+                    tools={exercise.tools}
                     name={exercise.name}
                     type={exercise.type}
                     progression={exercise.progression}
