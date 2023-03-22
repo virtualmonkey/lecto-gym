@@ -1,0 +1,64 @@
+@use '../../utils/styles/variables' as variables;
+
+.page-container {
+  &--week {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.week {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 80px auto;
+  width: 100%;
+  max-width: 1056px;
+
+  &__error-message {
+    position: fixed;
+    top: 16px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 999;
+    animation: popInAndOut 4s ease forwards;
+    -webkit-animation: popInAndOut 4s ease forwards;
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 320px;
+    font-family: variables.$fontFamily;
+    font-style: normal;
+    font-size: variables.$captionFontSize;
+    font-weight: variables.$normal;
+    color: variables.$warningDark;
+    border: 1px solid variables.$warningLight;
+    background-color: #fff2f1;
+    padding: 14px 12px;
+    text-align: center;
+  }
+
+  &__title {
+    font-family: variables.$fontFamily;
+    font-style: normal;
+    font-size: variables.$h1FontSize;
+    font-weight: variables.$semiBold;
+    text-align: center;
+    color: variables.$textDark;
+    margin: 0 auto 40px;
+  }
+
+  &__days-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1056px;
+  }
+}

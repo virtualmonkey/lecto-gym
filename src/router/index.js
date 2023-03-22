@@ -15,6 +15,7 @@ import InitialTestIntro from '../pages/InitialTestIntro';
 import InitialTestLecture from '../pages/InitialTestLecture';
 import InitialTestQuestions from '../pages/InitialTestQuestions';
 import Week from '../pages/Week';
+import Exercise from '../pages/Exercise';
 
 //Components
 import Nav from '../components/Nav';
@@ -75,6 +76,12 @@ const RouterApp = ({
           component={Week}
           isAuthenticated={isAuthenticated}
         />
+        <RestrictedRoute
+          exact
+          path={`/exercise/:itemId/:userItemId`}
+          component={Exercise}
+          isAuthenticated={isAuthenticated}
+        />
         <Redirect to="/" />
       </Switch>
     </Fragment>
@@ -82,7 +89,7 @@ const RouterApp = ({
 }
 
 const mapStateToProps = (state) => ({
-  isAuthenticated: selectors.isAuthenticated(state)
+  isAuthenticated: selectors.isAuthenticated(state),
 });
 
 export default withRouter(connect(mapStateToProps)(RouterApp));

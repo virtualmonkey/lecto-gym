@@ -1,0 +1,102 @@
+@use '../../utils/styles/variables' as variables;
+
+.day {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: variables.$disabled;
+  border-radius: 8px;
+  margin: 0 0 40px 0;
+  width: 100%;
+  box-sizing: border-box;
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 32px;
+    box-sizing: border-box;
+    max-width: inherit;
+    width: 100%;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__left-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  &__name {
+    font-family: variables.$fontFamily;
+    font-style: normal;
+    font-size: variables.$h3FontSize;
+    font-weight: variables.$semiBold;
+    color: variables.$textDark;
+    margin: 0 24px 0 0;
+  }
+
+  &__current-state {
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: variables.$fontFamily;
+    font-style: normal;
+    font-size: 12px;
+    font-weight: variables.$semiBold;
+    margin: 0 0 0 0;
+    padding: 6px 12px;
+    text-align: center;
+
+    &--completed {
+      color: variables.$white;
+      border: 1px solid variables.$secondaryDark;
+      background-color: variables.$secondaryDark;
+    }
+
+    &--in-progress {
+      color: variables.$white;
+      border: 1px solid variables.$primaryDark;
+      background-color: variables.$primaryDark;
+    }
+  }
+
+  &__toggle-button {
+    font-family: variables.$fontFamily;
+    font-style: normal;
+    font-size: variables.$h3FontSize;
+    font-weight: variables.$semiBold;
+    color: variables.$textDark;
+    margin: 0;
+  }
+
+  &__exercises {
+    display: none;
+  }
+
+  &--expanded & {
+    &__header {
+      padding: 20px 32px 0;
+    }
+
+    &__exercises {
+      padding: 20px 32px;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      box-sizing: border-box;
+      width: 100%;
+    }
+  }
+
+  &:last-child {
+    margin: 0;
+  }
+}

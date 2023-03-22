@@ -2,13 +2,15 @@ import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
 import './index.scss';
 
-import Week from '../../components/Week';
+import WeekTile from '../../components/WeekTile';
 
 import * as weeksActions from '../../redux/weeks/weeks.actions';
 import * as selectors from '../../redux/rootReducer';
 
 const Dashboard = ({
   weeks,
+  isWeekUnlocked,
+  isWeekCompleted,
   fetchingWeeksError,
   fetchWeeks,
 }) => {
@@ -32,13 +34,13 @@ const Dashboard = ({
           <div className="dashboard__tiles-container">
             {
               weeks.map((week, index) => (
-                <Week 
+                <WeekTile 
                   key={week.id}
                   id={week.id}
                   name={`Semana ${week.id}`}
                   progression={week.progression}
-                  disabled={(week.id !== 1) ? (weeks[index - 1].progression < 35) ? true : false : false}
-                  completed={week.progression === 35}
+                  unlocked={isWeekUnlocked(week.id)}
+                  completed={isWeekCompleted(week.id)}
                 />
               ))
             }
@@ -51,6 +53,8 @@ const Dashboard = ({
 
 const mapStateToProps = (state) => ({
   weeks: selectors.getWeeks(state),
+  isWeekUnlocked: (id) => selectors.isWeekUnlocked(state, id),
+  isWeekCompleted: (id) => selectors.isWeekCompleted(state, id),
   fetchingWeeksError: selectors.getFetchingWeeksError(state)
 });
 
