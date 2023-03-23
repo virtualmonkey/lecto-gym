@@ -5,6 +5,7 @@ import timer, * as timerSelectors from './timer/timer.reducer';
 import tests, * as testsSelectors from './tests/tests.reducer';
 import weeks, * as weeksSelectors from './weeks/weeks.reducer';
 import week, * as weekSelectors from './week/week.reducer';
+import exercise, * as exerciseSelectors from './exercise/exercise.reducer';
 
 const reducer = combineReducers({
   auth,
@@ -12,6 +13,7 @@ const reducer = combineReducers({
   tests,
   weeks,
   week,
+  exercise,
 });
 
 export default reducer;
@@ -39,11 +41,17 @@ export const getIsFetchingWeeks = state => weeksSelectors.getIsFetchingWeeks(sta
 export const getFetchingWeeksError = state => weeksSelectors.getFetchingWeeksError(state.weeks);
 
 export const getWeekId = (state) => weekSelectors.getWeekId(state.week);
-export const getExercise = (state, id) => weekSelectors.getExercise(state.week, id);
+export const getExerciseById = (state, id) => weekSelectors.getExerciseById(state.week, id);
 export const getExercisesFromArray = (state, array) => weekSelectors.getExercisesFromArray(state.week, array);
 export const getDay = (state, id) => weekSelectors.getDay(state.week, id);
-export const getIsDayUnlocked = (state, previousDayId) => weekSelectors.getIsDayUnlocked(state.week, previousDayId);
+export const getIsDayUnlocked = (state, id) => weekSelectors.getIsDayUnlocked(state.week, id);
 export const getIsDayCompleted = (state, id) => weekSelectors.getIsDayCompleted(state.week, id);
 export const getDays = (state) => weekSelectors.getDays(state.week);
 export const getIsFetchingWeek = (state) => weekSelectors.getIsFetchingWeek(state.week);
 export const getFetchWeekError = (state) => weekSelectors.getFetchWeekError(state.week);
+
+export const getExercise = (state) => exerciseSelectors.getExercise(state.exercise);
+export const getIsFetchingExercise = (state) => exerciseSelectors.getIsFetchingExercise(state.exercise);
+export const getFetchExerciseError = (state) => exerciseSelectors.getFetchExerciseError(state.exercise);
+export const getIsProgressingExercise = (state) => exerciseSelectors.getIsProgressingExercise(state.exercise);
+export const getProgressExerciseError = (state) => exerciseSelectors.getProgressExerciseError(state.exercise);
