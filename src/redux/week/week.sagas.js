@@ -19,6 +19,7 @@ export function* fetchWeek(action) {
         fetch,
         `${WEEK_API_ROUTE}/${action.payload.id}`,
         {
+          method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json',

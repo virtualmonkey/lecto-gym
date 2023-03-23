@@ -5,7 +5,6 @@ import { getExerciseTypeString } from '../../utils/functions';
 import CustomLink from '../CustomLink';
 import ProgressIndicator from '../ProgressIndicator';
 
-// TODO: pass itemId as prop, and in the CustomLink pass the id and other props as a prop
 const ExerciseTile = ({
   id,
   itemId,

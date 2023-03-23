@@ -1,0 +1,255 @@
+@use '../../utils/styles/variables' as variables;
+
+.page-container {
+  &--exercise {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.exercise {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 72px auto;
+  width: 100%;
+  max-width: 800px;
+  background-color: variables.$disabled;
+  padding: 32px;
+  border-radius: 8px;
+  box-sizing: border-box;
+
+  &__error-message {
+    position: fixed;
+    top: 16px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 999;
+    animation: popInAndOut 4s ease forwards;
+    -webkit-animation: popInAndOut 4s ease forwards;
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 320px;
+    font-family: variables.$fontFamily;
+    font-style: normal;
+    font-size: variables.$captionFontSize;
+    font-weight: variables.$normal;
+    color: variables.$warningDark;
+    border: 1px solid variables.$warningLight;
+    background-color: #fff2f1;
+    padding: 14px 12px;
+    text-align: center;
+  }
+
+  &__name {
+    font-family: variables.$fontFamily;
+    font-style: normal;
+    font-size: variables.$h1FontSize;
+    font-weight: variables.$semiBold;
+    text-align: center;
+    color: variables.$textDark;
+    margin: 0 auto 40px;
+  }
+
+  &__instructions {
+    align-self: flex-start;
+    font-family: variables.$fontFamily;
+    font-style: normal;
+    font-size: variables.$pFontSize;
+    font-weight: variables.$normal;
+    color: variables.$textDark;
+    margin: 0 0 16px;
+  }
+
+  &__tools {
+    align-self: flex-start;
+    font-family: variables.$fontFamily;
+    font-style: normal;
+    font-size: variables.$pFontSize;
+    font-weight: variables.$normal;
+    color: variables.$textDark;
+    margin: 0 0 24px;
+  }
+
+  &__timer-container {
+    width: 100%;
+    margin: 0 0 48px 0;
+  }
+
+  & img {
+    width: 597px;
+    height: 100%;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__answer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 48px auto 0;
+  }
+
+  &__input-label {
+    font-family: variables.$fontFamily;
+    font-style: normal;
+    font-size: 18px;
+    font-weight: variables.$semiBold;
+    text-align: end;
+    color: variables.$textDark;
+    width: 100%;
+    margin: 0 20px 0 0;
+  }
+
+  &__input[type="text"] {
+    padding: 10px 12px;
+    box-shadow: inset 0 0 0px 9999px white;
+    -webkit-box-shadow: inset 0 0 0px 9999px white;
+    background-color: variables.$white;
+    box-sizing: border-box;
+    outline: none;
+    border: 1px solid variables.$secondaryLight;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 280px;
+    margin: 0;
+    font-family: variables.$fontFamily;
+    font-style: normal;
+    font-size: variables.$pFontSize;
+    font-weight: variables.$normal;
+    color: variables.$textDark;
+
+    &:focus {
+      outline: none;
+      border: 1px solid variables.$grey !important;
+    }
+  }
+
+  &__input-error {
+    margin: 8px 0 0 0;
+    font-family: variables.$fontFamily;
+    font-style: normal;
+    font-size: variables.$captionFontSize;
+    font-weight: variables.$normal;
+    color: variables.$warningDark;
+  }
+
+  &__submit {
+    font-family: variables.$fontFamily;
+    font-style: normal;
+    font-size: variables.$aFontSize;
+    font-weight: variables.$semiBold;
+    color: variables.$textLight;
+    background-color: variables.$primaryDark;
+    text-decoration: none;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    margin: 32px 0 0 0;
+    text-align: center;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #1C5385;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      background-color: variables.$disabled;
+      color: variables.$grey;
+      outline: 1px solid variables.$grey;
+    }
+  }
+}
+
+.popup-content {
+  margin: auto;
+  max-width: 400px;
+}
+
+.popup-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+  &__container {
+    position: relative;
+    border-radius: 8px;
+    background: variables.$primaryDark;
+    padding: 32px 32px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-align: center;
+    font-family: variables.$fontFamily;
+    font-size: variables.$h5FontSize;
+    font-style: normal;
+    font-weight: variables.$normal;
+    text-align: center;
+    color: variables.$textLight;
+    line-height: 24px;
+    padding: 0 6px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__title {
+    font-family: variables.$fontFamily;
+    font-style: normal;
+    font-size: variables.$h5FontSize;
+    font-weight: variables.$semiBold;
+    text-align: center;
+    color: variables.$textLight;
+    margin: 0 auto 16px;
+  }
+
+  &__text {
+    font-family: variables.$fontFamily;
+    font-style: normal;
+    font-size: variables.$pFontSize;
+    font-weight: variables.$normal;
+    text-align: center;
+    color: variables.$textLight;
+    margin: 0 auto 28px;
+  }
+
+  &__next {
+    font-family: variables.$fontFamily;
+    font-style: normal;
+    font-size: variables.$pFontSize;
+    font-weight: variables.$semiBold;
+    color: variables.$textDark;
+    background-color: variables.$secondaryLight;
+    text-align: center;
+    text-decoration: none;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    margin: 0;
+
+    &:hover {
+      cursor: pointer;
+      background-color: variables.$secondaryDark;
+    }
+  }
+}

@@ -1,15 +1,31 @@
+import * as constants from './constants';
+
 export const getExerciseTypeString = (type) => {
   switch (type) {
-    case 0:
+    case constants.ITEM_TYPE_FOLLOW_ARROWS:
       return 'Seguir flechas';
-    case 1:
+    case constants.ITEM_TYPE_SKIM_WORDS:
       return 'Percepción de palabras';
-    case 2:
+    case constants.ITEM_TYPE_FIND_WORDS:
       return 'Encontrar palabras';
-    case 3:
+    case constants.ITEM_TYPE_FIND_ANTONYMS:
       return 'Encontrar antónimos';
-    case 4:
+    case constants.ITEM_TYPE_READ_TEXT: 
       return 'Lectura'
+    default:
+      return ''
+  }
+};
+
+export const getInputLabelString = (type) => {
+  switch (type) {
+    case constants.ITEM_TYPE_FOLLOW_ARROWS:
+    case constants.ITEM_TYPE_SKIM_WORDS:
+      return 'Número de iteraciones';
+    case constants.ITEM_TYPE_FIND_WORDS:
+    case constants.ITEM_TYPE_FIND_ANTONYMS:
+    case constants.ITEM_TYPE_READ_TEXT: 
+      return 'Tiempo en segundos';    
     default:
       return ''
   }

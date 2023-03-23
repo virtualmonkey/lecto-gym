@@ -143,8 +143,8 @@ const week = (state = initialState, action) => {
 };
 
 export const getWeekId = (state) => state.id;
-export const getExercise = (state, id) => state.exercises.byId[id];
-export const getExercisesFromArray = (state, array) => array.map(id => getExercise(state, id))
+export const getExerciseById = (state, id) => state.exercises.byId[id];
+export const getExercisesFromArray = (state, array) => array.map(id => getExerciseById(state, id))
 export const getDay = (state, id) => ({
   ...state.days.byId[id],
   exercises: getExercisesFromArray(state, state.days.byId[id].exercises),
