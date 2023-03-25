@@ -30,8 +30,9 @@ export const getIsRunning = state => timerSelectors.getIsRunning(state.timer);
 export const getElapsedTime = state => timerSelectors.getElapsedTime(state.timer);
 export const getElapsedTimeInSeconds = state => timerSelectors.getElapsedTimeInSeconds(state.timer);
 
-export const getSumbitTutorialError = state => testsSelectors.getSumbitTutorialError(state.tests);
-export const getSumbitInitialTestError = state => testsSelectors.getSumbitInitialTestError(state.tests);
+export const getSubmitTutorialError = state => testsSelectors.getSubmitTutorialError(state.tests);
+export const getSubmitInitialTestError = state => testsSelectors.getSubmitInitialTestError(state.tests);
+export const getSubmitFinalTestError = state => testsSelectors.getSubmitFinalTestError(state.tests);
 
 export const getWeek = (state, id) => weeksSelectors.getWeek(state.weeks, id);
 export const getWeeks = state => weeksSelectors.getWeeks(state.weeks);

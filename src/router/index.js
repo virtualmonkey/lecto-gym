@@ -16,6 +16,10 @@ import InitialTestLecture from '../pages/InitialTestLecture';
 import InitialTestQuestions from '../pages/InitialTestQuestions';
 import Week from '../pages/Week';
 import Exercise from '../pages/Exercise';
+import FinalTestIntro from '../pages/FinalTestIntro';
+import FinalTestLecture from '../pages/FinalTestLecture';
+import FinalTestQuestions from '../pages/FinalTestQuestions';
+import Results from '../pages/Results';
 
 //Components
 import Nav from '../components/Nav';
@@ -80,6 +84,30 @@ const RouterApp = ({
           exact
           path={`/exercise/:itemId/:userItemId`}
           component={Exercise}
+          isAuthenticated={isAuthenticated}
+        />
+        <RestrictedRoute
+          exact
+          path={`/final-test-intro`}
+          component={FinalTestIntro}
+          isAuthenticated={isAuthenticated}
+        />
+        <RestrictedRoute
+          exact
+          path={`/final-test-lecture`}
+          component={FinalTestLecture}
+          isAuthenticated={isAuthenticated}
+        />
+        <RestrictedRoute
+          exact
+          path={`/final-test-questions`}
+          component={FinalTestQuestions}
+          isAuthenticated={isAuthenticated}
+        />
+        <RestrictedRoute
+          exact
+          path={`/results`}
+          component={Results}
           isAuthenticated={isAuthenticated}
         />
         <Redirect to="/" />

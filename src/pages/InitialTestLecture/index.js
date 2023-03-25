@@ -10,10 +10,16 @@ import * as selectors from '../../redux/rootReducer';
 
 const InitialTestLecture = ({
   authUser,
+  onResetTimer,
   onStartTimer,
   onStopTimer,
 }) => {
   const history = useHistory();
+
+  useEffect(() => {
+    onResetTimer();
+    // eslint-disable-next-line
+  }, []);
 
   useEffect(() => {
     onStartTimer();
@@ -142,6 +148,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  onResetTimer: () => dispatch(timerActions.resetTimer()),
   onStartTimer: () => dispatch(timerActions.startTimer()),
   onStopTimer: () => dispatch(timerActions.stopTimer()),
 });

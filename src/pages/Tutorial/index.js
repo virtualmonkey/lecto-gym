@@ -70,7 +70,7 @@ const Tutorial = ({
 
 const mapStateToProps = (state) => ({
   authUser: selectors.getAuthUser(state),
-  submitTutorialError: selectors.getSumbitTutorialError(state)
+  submitTutorialError: selectors.getSubmitTutorialError(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({

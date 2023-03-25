@@ -4,7 +4,7 @@ import './index.scss';
 
 const CountDownTimer = ({ 
   expiryTimestamp,
-  setTimeExpired
+  setTimeExpired,
 }) => {
   const {
     seconds,

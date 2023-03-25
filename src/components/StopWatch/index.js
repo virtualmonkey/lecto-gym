@@ -3,7 +3,8 @@ import { useStopwatch } from 'react-timer-hook';
 import './index.scss';
 
 const StopWatch = ({
-  setTimeExpired
+  setTimeExpired,
+  setElapsedTime,
 }) => {
   const {
     seconds,
@@ -18,6 +19,11 @@ const StopWatch = ({
     setTimeExpired(!isRunning && ((minutes * 60) + seconds > 0));
     // eslint-disable-next-line
   }, [isRunning]);
+
+  useEffect(() => {
+    setElapsedTime((minutes * 60) + seconds);
+    // eslint-disable-next-line
+  }, [seconds, minutes]);
 
   return (
     <div className="stopwatch">
