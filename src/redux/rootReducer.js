@@ -6,6 +6,7 @@ import tests, * as testsSelectors from './tests/tests.reducer';
 import weeks, * as weeksSelectors from './weeks/weeks.reducer';
 import week, * as weekSelectors from './week/week.reducer';
 import exercise, * as exerciseSelectors from './exercise/exercise.reducer';
+import results, * as resultsSelectors from './results/results.reducer';
 
 const reducer = combineReducers({
   auth,
@@ -14,6 +15,7 @@ const reducer = combineReducers({
   weeks,
   week,
   exercise,
+  results,
 });
 
 export default reducer;
@@ -56,3 +58,9 @@ export const getIsFetchingExercise = (state) => exerciseSelectors.getIsFetchingE
 export const getFetchExerciseError = (state) => exerciseSelectors.getFetchExerciseError(state.exercise);
 export const getIsProgressingExercise = (state) => exerciseSelectors.getIsProgressingExercise(state.exercise);
 export const getProgressExerciseError = (state) => exerciseSelectors.getProgressExerciseError(state.exercise);
+
+export const getInitialTestResult = (state) => resultsSelectors.getInitialTestResult(state.results);
+export const getFinalTestResult = (state) => resultsSelectors.getFinalTestResult(state.results);
+export const getImprovement = (state) => resultsSelectors.getImprovement(state.results);
+export const getIsFetchingResults = (state) => resultsSelectors.getIsFetchingResults(state.results);
+export const getFetchResultsError = (state) => resultsSelectors.getFetchResultsError(state.results);

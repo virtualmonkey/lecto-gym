@@ -30,3 +30,5 @@ export const getInputLabelString = (type) => {
       return ''
   }
 };
+
+export const getDateFromIsoString = (isoString) => isoString.replace(/T.*/,'').split('-').reverse().join('-');

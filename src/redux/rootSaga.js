@@ -5,6 +5,7 @@ import { testsSagas } from './tests/tests.sagas';
 import { weeksSagas } from './weeks/weeks.sagas';
 import { weekSagas } from './week/week.sagas';
 import { exerciseSagas } from './exercise/exercise.sagas';
+import { resultsSagas } from './results/results.sagas';
 
 export default function* rootSaga() {
   yield all([
@@ -13,5 +14,6 @@ export default function* rootSaga() {
     call(weeksSagas),
     call(weekSagas),
     call(exerciseSagas),
+    call(resultsSagas)
   ]);
 };

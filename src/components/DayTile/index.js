@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './index.scss';
 
 const DayTile = ({
@@ -8,7 +8,12 @@ const DayTile = ({
   unlocked,
   completed,
 }) => {
-  const [expanded, setExpanded] = useState(!completed);
+  const [expanded, setExpanded] = useState(false);
+  
+  useEffect(() => {
+    setExpanded(!completed)
+  }, [completed]);
+
   return (
     (unlocked) ? (
       <div
