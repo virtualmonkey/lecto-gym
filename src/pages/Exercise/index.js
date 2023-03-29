@@ -32,6 +32,7 @@ const Exercise = ({
   } = useForm();
 
   const [timeExpired, setTimeExpired] = useState(undefined);
+  const [elapsedTime, setElapsedTime] = useState(0);
   const [open, setOpen] = useState(false);
   const closeModal = () => setOpen(false);
 
@@ -41,7 +42,8 @@ const Exercise = ({
   }, []);
 
   useEffect(() => {
-    if (currentExercise?.isCompleted === true) history.push(`/week/${currentExercise.week}`);
+    if (currentExercise?.isCompleted === true)
+      history.push(`/week/${currentExercise.week}`);
     // eslint-disable-next-line
   }, [currentExercise]);
 
@@ -66,10 +68,20 @@ const Exercise = ({
             ×
           </div>
           <div className="modal__title">
-            {(currentExercise?.type === ITEM_TYPE_FOLLOW_ARROWS || currentExercise?.type === ITEM_TYPE_SKIM_WORDS) ? '¡El tiempo se ha terminado!' : '¡Has concluido el ejercicio!'}
+            {
+              (
+                currentExercise?.type === ITEM_TYPE_FOLLOW_ARROWS 
+                || currentExercise?.type === ITEM_TYPE_SKIM_WORDS
+              ) ? '¡El tiempo se ha terminado!' : '¡Has detenido el tiempo!'
+            }
           </div>
           <div className="modal__text">
-            Ingresa tu resultado en el campo de abajo
+            {
+              (
+                currentExercise?.type === ITEM_TYPE_FOLLOW_ARROWS 
+                || currentExercise?.type === ITEM_TYPE_SKIM_WORDS
+              ) ? 'Ingresa tu resultado en el campo de abajo' : 'Clickea en "Finalizar Ejercicio" para subir tu resultado'
+            }
           </div>
           <button
             className='modal__next'
@@ -112,6 +124,7 @@ const Exercise = ({
                   ) : (
                     <StopWatch
                       setTimeExpired={setTimeExpired}
+                      setElapsedTime={setElapsedTime}
                     />
                   )
                 }
@@ -125,15 +138,25 @@ const Exercise = ({
                   <div className="exercise__input-label">
                     {getInputLabelString(currentExercise.type)}:
                   </div>
-                  <input
-                    {...register('value', {
-                      required: true,
-                      pattern: /^\d+$/,
-                    })}
-                    placeholder="Resultado del ejercicio"
-                    className="exercise__input"
-                    type="text"
-                  />
+                  {(currentExercise.type === ITEM_TYPE_FOLLOW_ARROWS || currentExercise.type === ITEM_TYPE_SKIM_WORDS) ? (
+                    <input
+                      {...register('value', {
+                        required: true,
+                        pattern: /^\d+$/,
+                      })}
+                      placeholder="Resultado del ejercicio"
+                      className="exercise__input"
+                      type="text"
+                    />
+                  ) : (
+                    <input
+                      {...register('value', {})}
+                      placeholder="Resultado del ejercicio"
+                      className="exercise__input exercise__input--disabled"
+                      type="text"
+                      value={elapsedTime}
+                    />
+                  )}
                 </div>
                 {errors.value?.type === "required" && (
                   <div className="exercise__input-error">

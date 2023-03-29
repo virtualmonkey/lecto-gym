@@ -1,0 +1,212 @@
+@use '../../utils/styles/variables' as variables;
+
+.page-container {
+  &--results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 80px auto;
+  width: 100%;
+  max-width: 800px;
+  box-sizing: border-box;
+
+  &__error-message {
+    position: fixed;
+    top: 16px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 999;
+    animation: popInAndOut 4s ease forwards;
+    -webkit-animation: popInAndOut 4s ease forwards;
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 320px;
+    font-family: variables.$fontFamily;
+    font-style: normal;
+    font-size: variables.$captionFontSize;
+    font-weight: variables.$normal;
+    color: variables.$warningDark;
+    border: 1px solid variables.$warningLight;
+    background-color: #fff2f1;
+    padding: 14px 12px;
+    text-align: center;
+  }
+
+  &__title {
+    font-family: variables.$fontFamily;
+    font-style: normal;
+    font-size: variables.$h1FontSize;
+    font-weight: variables.$semiBold;
+    text-align: center;
+    color: variables.$textDark;
+    margin: 0 auto 32px;
+  }
+
+  &__text {
+    font-family: variables.$fontFamily;
+    font-style: normal;
+    font-size: variables.$pFontSize;
+    font-weight: variables.$normal;
+    text-align: center;
+    color: variables.$textDark;
+    margin: 0 auto 48px;
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 16px;
+    width: 100%;
+    margin: 0 0 40px 0;
+  }
+
+  &__tests-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__test-result-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 24px 32px;
+    background-color: variables.$background;
+    border-radius: 8px;
+    filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.3));
+    width: 100%;
+    max-width: calc(100% - 16px);
+    box-sizing: border-box;
+
+    &:first-child {
+      margin: 0 0 8px 0;
+    }
+
+    &:last-child {
+      margin: 8px 0 0 0;
+    }
+  }
+
+  &__test-result-title {
+    font-family: variables.$fontFamily;
+    font-style: normal;
+    font-size: variables.$h6FontSize;
+    font-weight: variables.$semiBold;
+    text-align: left;
+    color: variables.$textDark;
+    margin: 0 0 24px;
+  }
+
+  &__test-result-field {
+    display: block;
+    margin: 0 0 16px;
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+
+  &__test-result-label {
+    display: inline-block;
+    font-family: variables.$fontFamily;
+    font-style: normal;
+    font-size: variables.$pFontSize;
+    font-weight: variables.$normal;
+    text-align: left;
+    color: variables.$textDark;
+    margin: 0 4px 0 0;
+  }
+
+  &__test-result-number {
+    display: inline-block;
+    font-family: variables.$fontFamily;
+    font-style: normal;
+    font-size: variables.$pFontSize;
+    font-weight: variables.$bold;
+    text-align: left;
+    color: variables.$primaryDark;
+    margin: 0 8px 0 0;
+  }
+
+  &__improvement-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 32px;
+    background-color: variables.$background;
+    border-radius: 8px;
+    filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.3));
+    width: 100%;
+    box-sizing: border-box;
+    flex-grow: 1;
+  }
+
+  &__improvement-title {
+    font-family: variables.$fontFamily;
+    font-style: normal;
+    font-size: variables.$h6FontSize;
+    font-weight: variables.$semiBold;
+    text-align: center;
+    color: variables.$textDark;
+    margin: 0 0 24px;
+  }
+
+  &__improvement-number {
+    font-family: variables.$fontFamily;
+    font-style: normal;
+    font-size: 56px;
+    font-weight: variables.$bold;
+    text-align: left;
+    color: variables.$secondaryDark;
+    margin: 0 0 8px 0;
+  }
+
+  &__improvement-text {
+    font-family: variables.$fontFamily;
+    font-style: normal;
+    font-size: variables.$pFontSize;
+    font-weight: variables.$normal;
+    text-align: center;
+    color: variables.$textDark;
+    margin: 0 0 24px;
+    max-width: 280px;
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+
+  &__link {
+    font-family: variables.$fontFamily;
+    font-style: normal;
+    font-size: variables.$aFontSize;
+    font-weight: variables.$semiBold;
+    color: variables.$textLight;
+    background-color: variables.$primaryDark;
+    text-decoration: none;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    margin: 0;
+    text-align: center;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #1C5385;
+    }
+  }
+}

@@ -27,9 +27,9 @@ const SignIn = ({
 
   useEffect(() => {
     if (authUser) {
-      // TODO: logic to show final-test-intro
       if (!authUser.has_completed_tutorial) history.push('/tutorial');
       else if (!authUser.has_completed_initial_test) history.push('/initial-test-intro');
+      else if (authUser.can_access_final_test && !authUser.has_completed_final_test) history.push('/final-test-intro')
       else history.push('/dashboard');
     }
   }, [authUser, history]);

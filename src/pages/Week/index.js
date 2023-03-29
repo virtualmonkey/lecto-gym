@@ -9,10 +9,11 @@ import ExerciseTile from '../../components/ExerciseTile';
 import * as weekActions from '../../redux/week/week.actions';
 import * as selectors from '../../redux/rootReducer';
 
-const Week = ({ 
+const Week = ({
   weekId,
   days,
   fetchWeekError,
+  isFetchingWeek,
   isDayUnlocked,
   isDayCompleted,
   fetchWeek
@@ -36,32 +37,34 @@ const Week = ({
           <h1 className="week__title">
             {weekId ? `Semana ${weekId}` : 'Cargando...'}
           </h1>
-          <div className="week__days-container">
-            {days.length > 0 && (days.map((day, index) =>
-              <DayTile
-                key={day.id}
-                id={day.id}
-                name={day.name}
-                unlocked={isDayUnlocked(day.id)}
-                completed={isDayCompleted(day.id)}
-              >
-                {day.exercises.length > 0 && (day.exercises.map(exercise =>
-                  <ExerciseTile
-                    key={exercise.id}
-                    id={exercise.id}
-                    itemId={exercise.itemId}
-                    week={exercise.week}
-                    day={exercise.day}
-                    tools={exercise.tools}
-                    name={exercise.name}
-                    type={exercise.type}
-                    progression={exercise.progression}
-                    disabled={exercise.progression === 3}
-                  />
-                ))}
-              </DayTile>
-            ))}
-          </div>
+          {(isFetchingWeek) ? <></> : (
+            <div className="week__days-container">
+              {days.length > 0 && (days.map((day, index) =>
+                <DayTile
+                  key={`${day.id}-id`}
+                  id={day.id}
+                  name={day.name}
+                  unlocked={isDayUnlocked(day.id)}
+                  completed={isDayCompleted(day.id)}
+                >
+                  {day.exercises.length > 0 && (day.exercises.map(exercise =>
+                    <ExerciseTile
+                      key={exercise.id}
+                      id={exercise.id}
+                      itemId={exercise.itemId}
+                      week={exercise.week}
+                      day={exercise.day}
+                      tools={exercise.tools}
+                      name={exercise.name}
+                      type={exercise.type}
+                      progression={exercise.progression}
+                      disabled={exercise.progression === 3}
+                    />
+                  ))}
+                </DayTile>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </Fragment>
@@ -72,6 +75,7 @@ const mapStateToProps = (state) => ({
   weekId: selectors.getWeekId(state),
   days: selectors.getDays(state),
   fetchWeekError: selectors.getFetchWeekError(state),
+  isFetchingWeek: selectors.getIsFetchingWeek(state),
   isDayUnlocked: (id) => selectors.getIsDayUnlocked(state, id),
   isDayCompleted: (id) => selectors.getIsDayCompleted(state, id)
 });

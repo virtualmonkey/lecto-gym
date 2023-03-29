@@ -40,7 +40,7 @@ const WeekTile = ({
         }`}
         to={`/week/${id}`}
       >
-        Realizar Ejercicios
+        {(completed) ? 'Ver progreso' : 'Realizar ejercicios'}
       </CustomLink>
     </div>
   );

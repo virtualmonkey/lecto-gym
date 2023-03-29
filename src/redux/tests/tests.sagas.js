@@ -94,6 +94,49 @@ export function* submitInitialTest(action) {
   }
 }
 
+export function* submitFinalTest(action) {
+  try {
+    const isAuth = yield select(selectors.isAuthenticated);
+
+    if (isAuth) {
+      const token = yield select(selectors.getToken);
+      const requestBody = {
+        'words_percentage': action.payload.percentage,
+        'words_per_minute': action.payload.wordsPerMinute,
+        'time': action.payload.time,
+        'type': action.payload.type
+      };
+
+      const response = yield call(
+        fetch,
+        `${TESTS_API_ROUTE}`,
+        {
+          method: 'POST',
+          body: JSON.stringify(requestBody),
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+      
+      if (response.status === 201){
+        const data = yield response.json();
+        if (data) {
+          yield put(actions.completeSubmitFinalTest());
+          yield put(authActions.startGetUser(token))
+        } else {
+          yield put(actions.failSubmitFinalTest('Failed to submit final test'));
+        }
+      } else {
+        yield put(actions.failSubmitFinalTest('Failed to submit final test'));
+      }
+    }
+  } catch(error) {
+    yield put(actions.failSubmitFinalTest(error))
+  }
+}
+
 export function* watchSubmitTutorial() {
   yield takeLatest(types.SUBMIT_TUTORIAL_STARTED, submitTutorial);
 }
@@ -102,6 +145,10 @@ export function* watchSubmitInitialTest() {
   yield takeLatest(types.SUBMIT_INITIAL_TEST_STARTED, submitInitialTest);
 }
 
+export function* watchSubmitFinalTest() {
+  yield takeLatest(types.SUBMIT_FINAL_TEST_STARTED, submitFinalTest);
+}
+
 export function* testsSagas() {
-  yield all([call(watchSubmitInitialTest), call(watchSubmitTutorial)]);
+  yield all([call(watchSubmitTutorial), call(watchSubmitInitialTest), call(watchSubmitFinalTest)]);
 };

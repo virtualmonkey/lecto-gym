@@ -82,7 +82,7 @@ export const isWeekUnlocked = (state, id) => {
   const weekOrderIndex = indexOf(state.order, id);
 
   if (weekOrderIndex > 0) {
-    if (getWeek(state, state.order[weekOrderIndex - 1]).progression <= 35) return false
+    if (getWeek(state, state.order[weekOrderIndex - 1]).progression < 35) return false
   }
 
   return true;

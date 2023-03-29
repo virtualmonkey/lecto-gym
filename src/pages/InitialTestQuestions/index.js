@@ -179,7 +179,7 @@ const InitialTestQuestions = ({
             </div>
           ) : (
             <div className="initial-test-questions__instructions">
-              <p>A continuación se te presentarán <b>10</b> preguntas relacionadas con la lectura. Para cada pregunta, clickea
+              <p>A continuación se te presentarán <b>9</b> preguntas relacionadas con la lectura. Para cada pregunta, clickea
                 la respuesta que consideres correcta y luego clickea en "Siguiente pregunta". </p>
             </div>
           )}
@@ -271,7 +271,7 @@ const InitialTestQuestions = ({
 const mapStateToProps = (state) => ({
   authUser: selectors.getAuthUser(state),
   elapsedTimeInSeconds: selectors.getElapsedTimeInSeconds(state),
-  submitInitialTestError: selectors.getSumbitInitialTestError(state)
+  submitInitialTestError: selectors.getSubmitInitialTestError(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({

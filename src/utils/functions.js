@@ -25,8 +25,10 @@ export const getInputLabelString = (type) => {
     case constants.ITEM_TYPE_FIND_WORDS:
     case constants.ITEM_TYPE_FIND_ANTONYMS:
     case constants.ITEM_TYPE_READ_TEXT: 
-      return 'Tiempo en segundos';    
+      return 'Tiempo (calculado automáticamente)';
     default:
       return ''
   }
 };
+
+export const getDateFromIsoString = (isoString) => isoString.replace(/T.*/,'').split('-').reverse().join('-');

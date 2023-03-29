@@ -1,6 +1,7 @@
 import { all, call, put, select, takeLatest } from 'redux-saga/effects';
 
 import { API_BASE_URL } from '../../utils/constants';
+import * as authActions from '../auth/auth.actions';
 import * as actions from './exercise.actions';
 import * as types from './exercise.types';
 import * as selectors from '../rootReducer';
@@ -68,6 +69,7 @@ export function* progressExercise(action){
 
         if (data) {
           yield put(actions.completeProgressExercise());
+          yield put(authActions.startGetUser(token));
         } else {
           yield put(actions.failProgressExercise("Failed to submit result"));
         }

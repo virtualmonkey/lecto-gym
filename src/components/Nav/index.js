@@ -10,11 +10,13 @@ import * as selectors from '../../redux/rootReducer';
 
 
 const Nav = ({
-  isAuthenticated,
   authUser,
   onSignOut
 }) => {
-  const canAccessDashboard = isAuthenticated && authUser && (authUser.has_completed_initial_test && authUser.has_completed_tutorial);
+  const canAccessDashboard =  authUser && (authUser.has_completed_initial_test && authUser.has_completed_tutorial);
+  const canAccessResults = authUser && authUser.has_completed_final_test === true;
+  const canAccessFinalTest = authUser && authUser.can_access_final_test && !authUser.has_completed_final_test && (authUser.has_completed_initial_test && authUser.has_completed_tutorial);
+
   return (
     <nav className='navbar'>
       <div className='navbar__left'>
@@ -26,7 +28,7 @@ const Nav = ({
         </Link>
       </div>
       <div className='navbar__right'>
-        {!isAuthenticated && (
+        {!authUser && (
           <Link
             className='navbar__link'
             to="/login"
@@ -34,7 +36,7 @@ const Nav = ({
             Ingresar
           </Link>
         )}
-        {!isAuthenticated && (
+        {!authUser && (
           <Link
             className='navbar__link'
             to="/signup"
@@ -50,7 +52,23 @@ const Nav = ({
               Dashboard
             </Link>
           )}
-        {isAuthenticated && (
+        {canAccessResults && (
+          <Link
+            className='navbar__link'
+            to="/results"
+          >
+            Resultados
+          </Link>
+        )}
+        {canAccessFinalTest && (
+          <Link
+            className='navbar__link'
+            to="/final-test-intro"
+          >
+            Prueba final
+          </Link>
+        )}
+        {authUser && (
           <Link
             className='navbar__link navbar__link--warning'
             to="/"
