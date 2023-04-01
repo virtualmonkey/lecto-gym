@@ -8,14 +8,14 @@ const Question = ({
   text,
 }) => {
   return (
-    <div className="question">
-      <div className="question__title">
+    <div className="question" data-test="question">
+      <div className="question__title" data-test="question-title">
         {`Pregunta ${questionNumber} de ${totalQuestions}`}
       </div>
-      <div className="question__text">
+      <div className="question__text" data-test="question-text">
         {text}
       </div>
-      <div className="question__options">
+      <div className="question__options" data-test="question-options">
         {children}
       </div>
     </div>

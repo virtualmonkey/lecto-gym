@@ -9,19 +9,23 @@ const Radio = ({
   onChange
 }) => {
   return (
-    <div className={`
-      radio
-      ${(checked) ? 'radio--checked' : ''}
-      `}>
+    <div 
+      className={`radio ${(checked) ? 'radio--checked' : ''}`}
+      data-test="radio"
+    >
       <input
         type="radio"
         className="radio__input"
+        data-test="radio-input"
         name={name}
         value={value}
         checked={checked}
         onChange={onChange}
       />
-      <label className="radio__label">
+      <label 
+        className="radio__label"
+        data-test="radio-label"
+      >
         {text}
       </label>
     </div>

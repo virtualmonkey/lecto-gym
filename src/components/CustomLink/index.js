@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router'
-import { useHistory } from "react-router-dom";
 
 const CustomLink = (props) => {
   const {
@@ -10,12 +9,13 @@ const CustomLink = (props) => {
     staticContext,
     to,
     onClick,
+    history,
     ...rest
   } = props;
-  const history = useHistory();
   
   return (
     <button
+      data-test={"link"}
       {...rest}
       onClick={(event) => {
         onClick && onClick(event)
