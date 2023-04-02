@@ -5,10 +5,10 @@ const ProgressIndicator = ({
   progression
 }) => {
   return (
-    <div className={`
-    progress-indicator
-    progress-indicator--${progression}
-    `}>
+    <div 
+      className={`progress-indicator progress-indicator--${progression}`}
+      data-test="progressIndicator"
+    >
       {progression}
     </div>
   );

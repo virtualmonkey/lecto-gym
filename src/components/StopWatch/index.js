@@ -26,24 +26,27 @@ const StopWatch = ({
   }, [seconds, minutes]);
 
   return (
-    <div className="stopwatch">
-      <div className="stopwatch__time">
+    <div className="stopwatch" data-test="stopWatch">
+      <div className="stopwatch__time" data-test="stopWatch-time">
         <span>{(minutes * 60) + seconds} s</span>
       </div>
       <div className="stopwatch__controls">
         <button
-          className="stopwatch__control stopwatch__control--start" 
+          className="stopwatch__control stopwatch__control--start"
+          data-test="stopWatch-start"
           onClick={start}>
             Iniciar cronómetro
         </button>
         <button 
           className="stopwatch__control stopwatch__control--stop"
+          data-test="stopWatch-stop"
           onClick={pause}
         >
           Pausar cronómetro
         </button>
         <button 
           className="stopwatch__control stopwatch__control--reset"
+          data-test="stopWatch-reset"
           onClick={reset}
         >
           Reiniciar cronómetro
