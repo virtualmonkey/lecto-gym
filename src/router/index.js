@@ -24,7 +24,6 @@ import Results from '../pages/Results';
 //Components
 import Nav from '../components/Nav';
 
-// TODO: change this redirect to a 404/not found page
 const RestrictedRoute = ({ component: Component, isAuthenticated, ...props }) => (
   <Route
     {...props}
