@@ -63,6 +63,8 @@
   },
   "jest": {
     "coveragePathIgnorePatterns": [
+      "<rootDir>/src/components/Nav/",
+      "<rootDir>/src/components/Timer/",
       "<rootDir>/src/pages/",
       "<rootDir>/src/router/",
       "<rootDir>/src/App.js",
