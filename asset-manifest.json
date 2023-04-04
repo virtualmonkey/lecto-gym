@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/lecto-gym/static/css/main.7bbb0129.css",
-    "main.js": "/lecto-gym/static/js/main.c6dcfdb9.js",
+    "main.js": "/lecto-gym/static/js/main.babae43e.js",
     "static/js/787.8bc6bb99.chunk.js": "/lecto-gym/static/js/787.8bc6bb99.chunk.js",
     "static/media/banner-image.jpg": "/lecto-gym/static/media/banner-image.33dd25445b42e2b43f48.jpg",
     "static/media/logo.svg": "/lecto-gym/static/media/logo.0195608eb826e63d358a2d9fd771d282.svg",
     "index.html": "/lecto-gym/index.html",
     "main.7bbb0129.css.map": "/lecto-gym/static/css/main.7bbb0129.css.map",
-    "main.c6dcfdb9.js.map": "/lecto-gym/static/js/main.c6dcfdb9.js.map",
+    "main.babae43e.js.map": "/lecto-gym/static/js/main.babae43e.js.map",
     "787.8bc6bb99.chunk.js.map": "/lecto-gym/static/js/787.8bc6bb99.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7bbb0129.css",
-    "static/js/main.c6dcfdb9.js"
+    "static/js/main.babae43e.js"
   ]
 }
