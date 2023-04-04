@@ -21,22 +21,28 @@ const DayTile = ({
         day
         ${(expanded) ? 'day--expanded' : ''}
       `}
+      data-test="day"
       >
         <div
           className="day__header"
+          data-test="day-header"
           onClick={() => setExpanded(expanded => !expanded)}
         >
           <div className="day__left-header">
             <div
               className="day__name"
+              data-test="day-name"
             >
               {name}
             </div>
             <div
               className={`
-              day__current-state
-              ${(completed) ? 'day__current-state--completed' : 'day__current-state--in-progress'}
-            `}>
+                day__current-state
+                ${(completed) ? 'day__current-state--completed' : 'day__current-state--in-progress'}
+              `}
+              data-test="day-current-state"
+            >
+
               {`${(completed) ? 'Completado' : 'En progreso'}`}
             </div>
           </div>
@@ -47,6 +53,7 @@ const DayTile = ({
         </div>
         <div
           className="day__exercises"
+          data-test="day-exercises"
         >
           {children}
         </div>

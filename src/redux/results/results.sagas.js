@@ -38,7 +38,7 @@ export function* fetchResults(action){
       }
     }
   } catch (error) {
-    yield put(actions.failFetchResults(error));
+    yield put(actions.failFetchResults(error.message));
   }
 };
 

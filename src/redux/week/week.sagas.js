@@ -51,7 +51,7 @@ export function* fetchWeek(action) {
     }
 
   } catch (error) {
-    yield put(actions.failFetchWeek(error))
+    yield put(actions.failFetchWeek(error.message))
   }
 };
 

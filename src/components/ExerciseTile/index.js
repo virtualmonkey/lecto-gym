@@ -17,14 +17,14 @@ const ExerciseTile = ({
   disabled,
 }) => {
   return (
-    <div className="exercise-tile">
-      <div className="exercise-tile__name">
+    <div className="exercise-tile" data-test="exericseTile">
+      <div className="exercise-tile__name" data-test="exericseTile-name">
         {name}
       </div>
-      <div className="exercise-tile__type">
+      <div className="exercise-tile__type" data-test="exericseTile-type">
         <b>Tipo: </b>{getExerciseTypeString(type)}
       </div>
-      <div className="exercise-tile__tools">
+      <div className="exercise-tile__tools" data-test="exericseTile-tools">
         <b>Herramientas: </b>{tools}
       </div>
       <div className="exercise-tile__actions">
@@ -38,6 +38,7 @@ const ExerciseTile = ({
             ${(disabled) ? 'exercise-tile__link--disabled ' : ''}
           `}
           to={`/exercise/${itemId}/${id}`}
+          data-test="exerciseTile-link"
         >
           Realizar Ejercicio
         </CustomLink>

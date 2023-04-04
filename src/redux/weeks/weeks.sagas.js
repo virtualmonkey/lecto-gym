@@ -39,7 +39,7 @@ export function* fetchWeeks(action){
       }
     }
   } catch (error) {
-    yield put(actions.failFetchWeeks(error));
+    yield put(actions.failFetchWeeks(error.message));
   }
 };
 

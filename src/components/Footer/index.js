@@ -3,8 +3,8 @@ import './index.scss';
 
 const Footer = () => (
   <Fragment>
-    <footer className="footer">
-      <small className="footer__text">
+    <footer className="footer" data-test="footer">
+      <small className="footer__text" data-test="footer-text">
         © 2023 <b>LectoGym</b>. Todos los derechos reservados.
       </small>
     </footer>

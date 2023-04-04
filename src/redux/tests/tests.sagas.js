@@ -39,15 +39,13 @@ export function* submitTutorial(action) {
         if (data) {
           yield put(actions.completeSubmitTutorial());
           yield put(authActions.startGetUser(token))
-        } else {
-          yield put(actions.failSubmitTutorial('Failed to submit tutorial'));
         }
       } else {
         yield put(actions.failSubmitTutorial('Failed to submit tutorial'));
       }
     }
   } catch(error) {
-    yield put(actions.failSubmitTutorial(error))
+    yield put(actions.failSubmitTutorial(error.message))
   }
 }
 
@@ -82,15 +80,13 @@ export function* submitInitialTest(action) {
         if (data) {
           yield put(actions.completeSubmitInitialTest());
           yield put(authActions.startGetUser(token))
-        } else {
-          yield put(actions.failSubmitInitialTest('Failed to submit initial test'));
         }
       } else {
         yield put(actions.failSubmitInitialTest('Failed to submit initial test'));
       }
     }
   } catch(error) {
-    yield put(actions.failSubmitInitialTest(error))
+    yield put(actions.failSubmitInitialTest(error.message))
   }
 }
 
@@ -125,15 +121,13 @@ export function* submitFinalTest(action) {
         if (data) {
           yield put(actions.completeSubmitFinalTest());
           yield put(authActions.startGetUser(token))
-        } else {
-          yield put(actions.failSubmitFinalTest('Failed to submit final test'));
         }
       } else {
         yield put(actions.failSubmitFinalTest('Failed to submit final test'));
       }
     }
   } catch(error) {
-    yield put(actions.failSubmitFinalTest(error))
+    yield put(actions.failSubmitFinalTest(error.message))
   }
 }
 
