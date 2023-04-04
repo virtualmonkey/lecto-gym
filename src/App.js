@@ -4,7 +4,7 @@ import RouterApp from './router';
 
 const App = () =>  {
   return (
-    <Router>
+    <Router basename="/lecto-gym">
       <Route path='' component={RouterApp} />
     </Router>
   );
