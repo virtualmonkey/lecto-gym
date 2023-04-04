@@ -28,7 +28,7 @@ export function* getUser(action) {
       yield put(actions.failGetUser('Could not get user with given token'));
     }
   } catch (error) {
-    yield put(actions.failGetUser(error));
+    yield put(actions.failGetUser(error.message));
   }
 }
 
@@ -55,14 +55,12 @@ export function* signIn(action) {
       if (token) {
         yield put(actions.completeSignIn(token));
         yield put(actions.startGetUser(token));
-      } else {
-        yield put(actions.failSignIn('Could not fetch user with given credentials'));
       }
     } else {
       yield put(actions.failSignIn('Could not fetch user due to an API error'));
     }
   } catch (error) {
-    yield put(actions.failSignIn(error));
+    yield put(actions.failSignIn(error.message));
   }
 };
 
@@ -94,15 +92,13 @@ export function* signUp(action) {
       if (token) {
         yield put(actions.completeSignUp(token));
         yield put(actions.startGetUser(token));
-      } else {
-        yield put(actions.failSignUp('Could not sign up user in database'));
       }
     } else {
       yield put(actions.failSignUp('Could not sign up user due to API error'));
     }
 
   } catch (error) {
-    yield put(actions.failSignUp(error));
+    yield put(actions.failSignUp(error.message));
   };
 };
 

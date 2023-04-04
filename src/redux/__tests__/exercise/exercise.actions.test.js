@@ -1,7 +1,7 @@
 import configureStore from 'redux-mock-store';
 
-import * as types from '../exercise/exercise.types';
-import * as actions from '../exercise/exercise.actions';
+import * as types from '../../exercise/exercise.types';
+import * as actions from '../../exercise/exercise.actions';
 
 const mockStore = configureStore();
 const store = mockStore();

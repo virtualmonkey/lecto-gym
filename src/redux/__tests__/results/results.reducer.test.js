@@ -1,5 +1,5 @@
-import * as types from '../results/results.types';
-import resultsReducer from '../results/results.reducer';
+import * as types from '../../results/results.types';
+import resultsReducer from '../../results/results.reducer';
 
 describe('results reducer', () => {
   it('Should return default state', () => {

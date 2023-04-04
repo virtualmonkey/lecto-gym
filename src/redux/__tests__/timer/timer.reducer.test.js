@@ -1,5 +1,5 @@
-import * as types from '../timer/timer.types';
-import timerReducer from '../timer/timer.reducer';
+import * as types from '../../timer/timer.types';
+import timerReducer from '../../timer/timer.reducer';
 
 describe('timer reducer', () => {
   it('Should return default state', () => {

@@ -37,11 +37,11 @@ export function* fetchExercise(action){
 
         yield put(actions.completeFetchExercise(modifiedExercise));
       } else {
-        yield put(actions.failFetchExercise("Failed to fetch week"));
+        yield put(actions.failFetchExercise("Failed to fetch exercise"));
       }
     }
   } catch (error) {
-    yield put(actions.failFetchExercise(error));
+    yield put(actions.failFetchExercise(error.message));
   }
 }
 
@@ -70,15 +70,13 @@ export function* progressExercise(action){
         if (data) {
           yield put(actions.completeProgressExercise());
           yield put(authActions.startGetUser(token));
-        } else {
-          yield put(actions.failProgressExercise("Failed to submit result"));
         }
       } else {
         yield put(actions.failProgressExercise("Failed to submit result"));
       }
     }
   } catch (error) {
-    yield put(actions.failProgressExercise(error));
+    yield put(actions.failProgressExercise(error.message));
   }
 }
 

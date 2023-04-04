@@ -1,7 +1,7 @@
 import configureStore from 'redux-mock-store';
 
-import * as types from '../week/week.types';
-import * as actions from '../week/week.actions';
+import * as types from '../../week/week.types';
+import * as actions from '../../week/week.actions';
 
 const mockStore = configureStore();
 const store = mockStore();

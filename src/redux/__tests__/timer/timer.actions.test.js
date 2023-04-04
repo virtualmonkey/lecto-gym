@@ -1,7 +1,7 @@
 import configureStore from 'redux-mock-store';
 
-import * as types from '../timer/timer.types';
-import * as actions from '../timer/timer.actions';
+import * as types from '../../timer/timer.types';
+import * as actions from '../../timer/timer.actions';
 
 const mockStore = configureStore();
 const store = mockStore();

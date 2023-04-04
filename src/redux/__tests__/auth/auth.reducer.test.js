@@ -1,5 +1,5 @@
-import * as types from '../auth/auth.types';
-import authReducer from '../auth/auth.reducer';
+import * as types from '../../auth/auth.types';
+import authReducer from '../../auth/auth.reducer';
 
 describe('auth reducer', () => {
   it('Should return default state', () => {

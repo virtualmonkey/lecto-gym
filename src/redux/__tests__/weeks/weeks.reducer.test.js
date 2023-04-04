@@ -1,5 +1,5 @@
-import * as types from '../weeks/weeks.types';
-import weeksReducer from '../weeks/weeks.reducer';
+import * as types from '../../weeks/weeks.types';
+import weeksReducer from '../../weeks/weeks.reducer';
 
 describe('weeks reducer', () => {
   it('Should return default state', () => {

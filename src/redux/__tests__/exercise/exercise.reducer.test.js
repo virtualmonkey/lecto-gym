@@ -1,5 +1,5 @@
-import * as types from '../exercise/exercise.types';
-import exerciseReducer from '../exercise/exercise.reducer';
+import * as types from '../../exercise/exercise.types';
+import exerciseReducer from '../../exercise/exercise.reducer';
 
 describe('exercise reducer', () => {
   it('Should return default state', () => {

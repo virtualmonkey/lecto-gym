@@ -1,5 +1,5 @@
-import * as types from '../tests/tests.types';
-import testsReducer from '../tests/tests.reducer';
+import * as types from '../../tests/tests.types';
+import testsReducer from '../../tests/tests.reducer';
 
 describe('tests reducer', () => {
   it('Should return default state', () => {
