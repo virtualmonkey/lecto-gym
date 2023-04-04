@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/lecto-gym/static/css/main.7bbb0129.css",
-    "main.js": "/lecto-gym/static/js/main.5669f2b0.js",
-    "static/js/787.8bc6bb99.chunk.js": "/lecto-gym/static/js/787.8bc6bb99.chunk.js",
-    "static/media/banner-image.jpg": "/lecto-gym/static/media/banner-image.33dd25445b42e2b43f48.jpg",
-    "static/media/logo.svg": "/lecto-gym/static/media/logo.0195608eb826e63d358a2d9fd771d282.svg",
-    "index.html": "/lecto-gym/index.html",
-    "main.7bbb0129.css.map": "/lecto-gym/static/css/main.7bbb0129.css.map",
-    "main.5669f2b0.js.map": "/lecto-gym/static/js/main.5669f2b0.js.map",
-    "787.8bc6bb99.chunk.js.map": "/lecto-gym/static/js/787.8bc6bb99.chunk.js.map"
+    "main.css": "/static/css/main.6a1818cf.css",
+    "main.js": "/static/js/main.dbc414e9.js",
+    "static/js/787.8bc6bb99.chunk.js": "/static/js/787.8bc6bb99.chunk.js",
+    "static/media/banner-image.jpg": "/static/media/banner-image.33dd25445b42e2b43f48.jpg",
+    "static/media/logo.svg": "/static/media/logo.0195608eb826e63d358a2d9fd771d282.svg",
+    "index.html": "/index.html",
+    "main.6a1818cf.css.map": "/static/css/main.6a1818cf.css.map",
+    "main.dbc414e9.js.map": "/static/js/main.dbc414e9.js.map",
+    "787.8bc6bb99.chunk.js.map": "/static/js/787.8bc6bb99.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7bbb0129.css",
-    "static/js/main.5669f2b0.js"
+    "static/css/main.6a1818cf.css",
+    "static/js/main.dbc414e9.js"
   ]
 }
