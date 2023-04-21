@@ -3,5 +3,8 @@ module.exports = {
     "@babel/preset-env",
     "@babel/preset-react"
   ],
-  plugins: ["@babel/plugin-syntax-jsx"]
+  plugins: [
+    "@babel/plugin-syntax-jsx", 
+    "@babel/plugin-proposal-decorators", { "legacy": true }
+  ]
 };
