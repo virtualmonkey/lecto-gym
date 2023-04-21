@@ -54,6 +54,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.21.4",
+    "@babel/plugin-syntax-jsx": "^7.21.4",
     "@babel/preset-env": "^7.21.4",
     "babel-jest": "^29.5.0",
     "enzyme": "^3.11.0",
