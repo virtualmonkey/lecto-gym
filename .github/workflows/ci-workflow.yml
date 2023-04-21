@@ -14,9 +14,5 @@ jobs:
       - name: 'Manual installation'
         run: yarn install
 
-      - uses: artiomtr/jest-coverage-report-action@v2
-        with:
-          package-manager: yarn
-          test-script: yarn jest --ci --json --coverage --testLocationInResults --outputFile=report.json
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          skip-step: install
+      - name: 'Run tests'
+        run: yarn yarn test --coverage --watchAll
