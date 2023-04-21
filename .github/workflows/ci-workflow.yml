@@ -1,9 +1,9 @@
 name: Check for coverage
 
 on:
-  pull_request:
+  push:
     branches:
-      - main
+      - feature/ci-pipeline
 
 jobs:
   coverage:
