@@ -1,23 +1,37 @@
-
 import sys
 import json
 
-percentage = 0
-threshold = 0
+statementsPercentage = 0
+branchesPercentage = 0
+functionsPercentage = 0
+linesPercentage = 0
 
 path = (sys.argv)[1]
-threshold = (sys.argv)[2]
+statementsThreshold = (sys.argv)[2]
+branchesThreshold = (sys.argv)[3]
+functionsThreshold = (sys.argv)[4]
+linesThreshold = (sys.argv)[5]
 
 try: 
     file = open(path)
     data = json.load(file)
-    percentage = data['total']['lines']['pct']
+    statementsPercentage = data['total']['statements']['pct']
+    branchesPercentage = data['total']['branches']['pct']
+    functionsPercentage = data['total']['functions']['pct']
+    linesPercentage = data['total']['lines']['pct']
 except:
     raise Exception("Couldn't parse JSON file")
 
-if (float(percentage) < float(threshold)):
-    raise Exception("Coverage criteria wasn't met")
+if (float(statementsPercentage) < float(statementsThreshold)):
+    raise Exception("Coverage criteria for statements wasn't met")
 
-print("Coverage criteria was met")
+if (float(branchesPercentage) < float(branchesThreshold)):
+    raise Exception("Coverage criteria for branches wasn't met")
+
+if (float(functionsPercentage) < float(functionsThreshold)):
+    raise Exception("Coverage criteria for functions wasn't met")
+
+if (float(linesPercentage) < float(linesThreshold)):
+    raise Exception("Coverage criteria for lines wasn't met")
  
 file.close()
