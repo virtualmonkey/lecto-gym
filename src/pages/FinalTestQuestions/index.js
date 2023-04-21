@@ -71,8 +71,8 @@ const FinalTestQuestions = ({
       options: [
         { id: 0, text: "Ultrajada", isCorrect: false, selected: false },
         { id: 1, text: "Feliz", isCorrect: false, selected: false },
-        { id: 2, text: "Indignada", isCorrect: false, selected: false },
-        { id: 3, text: "Triste", isCorrect: true, selected: false },
+        { id: 2, text: "Indignada", isCorrect: true, selected: false },
+        { id: 3, text: "Triste", isCorrect: false, selected: false },
       ],
     },
     {
