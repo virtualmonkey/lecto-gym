@@ -1,0 +1,20 @@
+name: Check for coverage
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        run: yarn install
+        
+      - uses: artiomtr/jest-coverage-report-action@v2
+        with:
+          package-manager: yarn
+          test-script: npx jest --ci --json --coverage --testLocationInResults --outputFile=report.json
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          skip-step: install
