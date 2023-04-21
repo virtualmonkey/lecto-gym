@@ -62,6 +62,14 @@
     "redux-mock-store": "^1.5.4"
   },
   "jest": {
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    },
     "coveragePathIgnorePatterns": [
       "<rootDir>/src/components/Nav/",
       "<rootDir>/src/components/Timer/",
