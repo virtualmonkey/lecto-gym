@@ -45,6 +45,6 @@ jobs:
             "target_url": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           }'
     
-      - run: yarn test --coverage --coverageReporters='json-summary' --watchAll
+      - run: yarn test --coverage --coverageReporters='json-summary'
 
       - run: python3 coverageVerificator.py coverage/coverage-summary.json 100
